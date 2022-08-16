@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<h1>Main page</h1>
-	</div>
+	<div class="main__contanier"></div>
 </template>
 
 <script>
@@ -15,18 +13,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-	margin: 40px 0 0;
-}
-ul {
-	list-style-type: none;
-	padding: 0;
-}
-li {
-	display: inline-block;
-	margin: 0 10px;
-}
-a {
-	color: #42b983;
+.main__contanier {
+	width: 100%;
+	min-height: 85vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: lightsalmon;
 }
 </style>

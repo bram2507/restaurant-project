@@ -1,18 +1,18 @@
 <template>
-	<div class="menu__contanier"></div>
+	<div class="booking__contanier"></div>
 </template>
 <script>
 export default {
-	name: "menu-view",
+	name: "booking-view",
 };
 </script>
 <style scoped>
-.menu__contanier {
+.booking__contanier {
 	width: 100%;
 	min-height: 85vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: lightskyblue;
+	background-color: lightslategrey;
 }
 </style>

@@ -15,6 +15,11 @@ const routes = [
     name: "specials",
     component: () => import("../views/Pages/Specials.vue"),
   },
+  {
+    path: "/booking",
+    name: "booking",
+    component: () => import("../views/Pages/Booking.vue"),
+  },
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

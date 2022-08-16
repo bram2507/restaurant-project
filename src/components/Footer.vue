@@ -1,5 +1,5 @@
 <template>
-	<div id="footer">
+	<div class="footer__container">
 		<h2>Footer</h2>
 	</div>
 </template>
@@ -11,4 +11,12 @@ export default {
 </script>
 
 <style scoped>
+.footer__container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	background-color: lightgreen;
+}
 </style>

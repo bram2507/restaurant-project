@@ -1,5 +1,5 @@
 <template>
-	<div>Specials page</div>
+	<div class="special__contanier"></div>
 </template>
 <script>
 export default {
@@ -7,4 +7,12 @@ export default {
 };
 </script>
 <style scoped>
+.special__contanier {
+	width: 100%;
+	min-height: 85vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: lightseagreen;
+}
 </style>
