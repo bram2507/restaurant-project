@@ -17,10 +17,18 @@ export default {
 };
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Noto+Sans&display=swap");
+* {
+	--cream: #fff4dc;
+	--red: #b04649;
+	--grey: #6b6f72;
+	--black: #101010;
+	--white: #ffffff;
+}
 html,
 body {
 	margin: 0px;
+	padding: 0px;
 }
 #app {
 	padding: 0;
@@ -30,5 +38,10 @@ body {
 	height: 100vh;
 	font-family: "M PLUS Rounded 1c", sans-serif;
 	text-decoration: none;
+}
+h1 {
+	font-size: 3vw;
+	padding: 2vh;
+	font-family: "Noto Sans", sans-serif;
 }
 </style>

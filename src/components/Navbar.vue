@@ -1,9 +1,10 @@
 <template>
 	<div class="navbar">
 		<div class="navbar__logo">
-			<img src="@/assets/Logo.svg" alt="" />
+			<div class="navbar__logo__name">
+				<h1>Ashitaka</h1>
+			</div>
 		</div>
-		<div></div>
 		<div v-if="desktop" class="navbar__navegation">
 			<router-link to="/"><span>Restaurante</span></router-link>
 			<router-link to="/menu"><span>Menu</span></router-link>
@@ -34,6 +35,9 @@ export default {
 		window.addEventListener("resize", () => {
 			this.windowWitdh = window.innerWidth;
 		});
+		window.addEventListener("onscroll", (event) => {
+			console.log(event);
+		});
 	},
 };
 </script>
@@ -43,30 +47,43 @@ export default {
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height: 50px;
-	background-color: transparent !important;
+	height: auto;
+	padding: 0.5vh;
+	margin: 0px;
+	top: 0;
+	position: fixed;
+	background-color: transparent;
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	text-decoration: none;
 }
 
 .navbar__logo {
-	width: 300px;
+	width: 100%;
 	height: 50px;
-	background-color: brown;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.5vh;
+}
+
+.navbar__logo__name {
 }
 
 .navbar__navegation {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: strech;
 	align-items: center;
-	min-width: 75%;
+	width: 100%;
 	flex-wrap: wrap;
 	min-height: 50px;
-	background-color: lightblue;
 	text-decoration: none;
+	text-decoration: underline;
 }
 
 .navbar__navegation span {
 	margin-left: 2vh;
 	margin-right: 2vh;
+	text-decoration: none;
 }
 
 .navbar__logo img {
