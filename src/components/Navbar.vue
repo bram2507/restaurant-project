@@ -1,5 +1,5 @@
 <template>
-	<div class="navbar">
+	<div :class="navStyle">
 		<div class="navbar__logo">
 			<div class="navbar__logo__name">
 				<h1>Ashitaka</h1>
@@ -21,6 +21,7 @@ export default {
 		return {
 			desktop: true,
 			windowWitdh: 0,
+			navStyle: "navbar",
 		};
 	},
 	watch: {
@@ -35,14 +36,25 @@ export default {
 		window.addEventListener("resize", () => {
 			this.windowWitdh = window.innerWidth;
 		});
-		window.addEventListener("onscroll", (event) => {
-			console.log(event);
-		});
 	},
 };
 </script>
 <style scoped>
 .navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	padding: 0.5vh;
+	margin: 0px;
+	top: 0;
+	position: fixed;
+	background-color: transparent;
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	text-decoration: none;
+}
+.navbar-scroll {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -64,9 +76,6 @@ export default {
 	justify-content: flex-start;
 	align-items: center;
 	padding: 0.5vh;
-}
-
-.navbar__logo__name {
 }
 
 .navbar__navegation {

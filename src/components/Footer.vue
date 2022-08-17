@@ -2,6 +2,7 @@
 	<div class="footer__container">
 		<h2>Footer</h2>
 	</div>
+	<div class="footer-media"></div>
 </template>
 
 <script>
@@ -16,7 +17,15 @@ export default {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 20vh;
+	min-height: 25vh;
 	background-color: var(--black);
+}
+.footer-media {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 5vh;
+	background-color: var(--cream);
 }
 </style>

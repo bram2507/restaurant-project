@@ -38,9 +38,10 @@ body {
 	height: 100vh;
 	font-family: "M PLUS Rounded 1c", sans-serif;
 	text-decoration: none;
+	overflow-x: hidden;
 }
 h1 {
-	font-size: 3vw;
+	font-size: 2em;
 	padding: 2vh;
 	font-family: "Noto Sans", sans-serif;
 }
