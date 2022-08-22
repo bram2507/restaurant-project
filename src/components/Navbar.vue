@@ -6,7 +6,11 @@
 			</div>
 		</div>
 		<div v-if="desktop" class="navbar__navegation">
-			<router-link to="/"><span>Restaurante</span></router-link>
+			<router-link to="/">
+				<slot>
+					<span>Restaurante</span>
+				</slot>
+			</router-link>
 			<router-link to="/menu"><span>Menu</span></router-link>
 			<router-link to="/specials"><span>Especiales</span></router-link>
 			<router-link to="/booking"><span>Reservas</span></router-link>
@@ -80,7 +84,7 @@ export default {
 
 .navbar__navegation {
 	display: flex;
-	justify-content: strech;
+	justify-content: space-evenly;
 	align-items: center;
 	width: 100%;
 	flex-wrap: wrap;
@@ -89,10 +93,13 @@ export default {
 	text-decoration: underline;
 }
 
-.navbar__navegation span {
+.navbar__navegation span,
+router-link {
+	font-size: 1.2rem;
 	margin-left: 2vh;
 	margin-right: 2vh;
 	text-decoration: none;
+	color: var(--black);
 }
 
 .navbar__logo img {

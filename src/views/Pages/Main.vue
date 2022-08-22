@@ -42,14 +42,14 @@
 		</div>
 		<div class="main_contanier__call-action">
 			<section class="main_contanier__dished">
-				<div class="main_contanier__dished--left">
+				<section class="main_contanier__dished--left">
 					<section>
-						<img src="@/assets/Recurso_18.svg" alt="" />
+						<img class="img" src="@/assets/Recurso_18.svg" alt="" />
 					</section>
 					<section>
-						<img src="@/assets/Recurso_4.svg" alt="" />
+						<img class="img" src="@/assets/Recurso_4.svg" alt="" />
 					</section>
-				</div>
+				</section>
 				<div class="main_contanier__dished--rigth">
 					<section class="main_contanier__dished--rigth__title">
 						<h1>Our mission is to bring true Japanese flavours to you.</h1>
@@ -64,6 +64,62 @@
 				</div>
 			</section>
 		</div>
+		<div class="main_contanier__call-action--products_list"></div>
+		<div class="main_contanier__call-action__seller">
+			<section class="main_contanier__call-action__seller--container">
+				<ul class="main_contanier__call-action__seller--left_side_product">
+					<li>
+						<h1>Whats trending / トレンド</h1>
+					</li>
+					<li>
+						<h2>Japanese Sushi</h2>
+					</li>
+					<li>
+						<h3>Feel the taste of most delicious sushi here.</h3>
+					</li>
+					<li class="sushi_products">
+						<div
+							class="sushi_products__item"
+							v-for="(item, key) in sushi"
+							:key="key"
+						>
+							<img src="@/assets/icons8-checkmark.svg" alt="icons" /> {{ item }}
+						</div>
+					</li>
+				</ul>
+				<div
+					class="main_contanier__call-action__seller--right_side_product"
+				></div>
+			</section>
+			<section class="main_contanier__call-action__seller--container">
+				<div
+					class="main_contanier__call-action__seller--right_side_product"
+				></div>
+				<div class="main_contanier__call-action__seller--left_side_product">
+					<ul class="main_contanier__call-action__seller--left_side_product">
+						<li>
+							<h1>Whats trending / トレンド</h1>
+						</li>
+						<li>
+							<h2>Japanese Sushi</h2>
+						</li>
+						<li>
+							<h3>Feel the taste of most delicious sushi here.</h3>
+						</li>
+						<li class="sushi_products">
+							<div
+								class="sushi_products__item"
+								v-for="(item, key) in sushi"
+								:key="key"
+							>
+								<img src="@/assets/icons8-checkmark.svg" alt="icons" />
+								{{ item }}
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
 	</div>
 </template>
 
@@ -73,11 +129,27 @@ export default {
 	props: {
 		msg: String,
 	},
+	data() {
+		return {
+			sushi: [
+				"maki sushi",
+				"nigiri sushi",
+				"ozishuzi",
+				"temaki sushi",
+				"uramaki sushi",
+				"inari sushi",
+			],
+		};
+	},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+li {
+	list-style: none;
+}
+
 .main_contanier {
 	width: 100%;
 	height: auto;
@@ -96,6 +168,15 @@ export default {
 	background-color: var(--white);
 }
 
+.main_contanier__call-action--products_list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	min-height: 30vh;
+	background-color: var(--red);
+}
+
 .main_contanier__call-action__left {
 	display: flex;
 	justify-content: center;
@@ -111,9 +192,81 @@ export default {
 
 .main_contanier__call-action__left img {
 	width: 160%;
-	height: 160%;
+	height: 120%;
 	z-index: 20;
 	position: sticky;
+	transition: 0.6s ease-in-out;
+}
+
+.main_contanier__call-action__seller {
+	width: 100%;
+	min-height: 30vh;
+	background-color: var(--white);
+}
+
+.sushi_products {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 75%;
+	height: auto;
+	flex-wrap: wrap;
+}
+
+.sushi_products__item {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 200px;
+	height: auto;
+	font-size: 1.2rem;
+}
+
+.sushi_products__item img {
+	width: 20px;
+	height: 20px;
+	margin-right: 1vh;
+}
+
+.main_contanier__call-action__seller--container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center top;
+	width: 100%;
+	min-height: 30vh;
+}
+
+.main_contanier__call-action__seller--left_side_product {
+	width: 50%;
+	min-height: 50vh;
+	background-color: var(--white);
+	display: flex;
+	justify-content: center;
+	align-items: left;
+	flex-direction: column;
+}
+
+.main_contanier__call-action__seller--left_side_product h1 {
+	color: var(--red);
+}
+
+.main_contanier__call-action__seller--right_side_product {
+	width: 50%;
+	min-height: 50vh;
+	background-color: var(--cream);
+	background-image: url("@/assets/letters_foods_1.svg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.main_contanier__call-action__left img:hover {
+	transition: 0.6s ease-in-out;
+	transform: scale(1.12) translateX(50px) translateY(50px);
 }
 .main_contanier__call-action__right {
 	display: flex;
@@ -335,7 +488,7 @@ export default {
 	transition: 0.5s ease-in-out;
 }
 .main_contanier__dished--left img:hover {
-	transform: scale(1.2);
+	transform: scale(1.3);
 	transition: 0.5s ease-in-out;
 }
 

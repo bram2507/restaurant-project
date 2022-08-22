@@ -42,7 +42,6 @@ body {
 }
 h1 {
 	font-size: 2em;
-	padding: 2vh;
 	font-family: "Noto Sans", sans-serif;
 }
 </style>
