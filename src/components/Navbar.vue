@@ -37,9 +37,6 @@ export default {
 		},
 	},
 	created() {
-		window.addEventListener("scroll", () => {
-			console.log("Scrolling...");
-		});
 		window.addEventListener("resize", () => {
 			this.windowWitdh = window.innerWidth;
 			console.log("Resize");

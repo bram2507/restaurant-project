@@ -91,6 +91,9 @@
 					<img src="@/assets/Recurso_6.svg" alt="recurso6" />
 				</div>
 			</section>
+			<section
+				class="main_contanier__call-action__seller--container__separator"
+			></section>
 			<section class="main_contanier__call-action__seller--container">
 				<div class="main_contanier__call-action__seller--right_side_product">
 					<img src="@/assets/Recurso_14.svg" alt="recurso6" />
@@ -160,11 +163,6 @@ export default {
 				this.desktop = false;
 			}
 		},
-	},
-	created() {
-		window.addEventListener("resize", () => {
-			console.log("cosas");
-		});
 	},
 };
 </script>
@@ -265,6 +263,12 @@ li {
 	align-items: center top;
 	width: 100%;
 	min-height: 30vh;
+}
+
+.main_contanier__call-action__seller--container__separator {
+	width: 100%;
+	height: 2px;
+	background-color: var(--red);
 }
 
 .main_contanier__call-action__seller--left_side_product {
@@ -409,7 +413,7 @@ li {
 .buttons__action_style {
 	margin-top: 2vh;
 	margin-bottom: 2vh;
-	width: 45%;
+	width: 42%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -422,12 +426,12 @@ li {
 	color: var(--white);
 	font-size: 1em;
 	transition: 0.5s ease-in-out;
-	margin-left: 1vh;
-	margin-right: 1vh;
+	margin-left: 1.5vh;
+	margin-right: 1.5vh;
 }
 
 .buttons__action_style:hover {
-	width: 50%;
+	width: 42%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -439,6 +443,8 @@ li {
 	color: var(--black);
 	font-size: 1em;
 	transition: 0.5s ease-in-out;
+	margin-left: 1.5vh;
+	margin-right: 1.5vh;
 }
 
 .number {
@@ -581,7 +587,7 @@ li {
 	text-align-last: left;
 }
 
-@media screen and (min-width: 200px) and (max-width: 500px) {
+@media screen and (min-width: 200px) and (max-width: 675px) {
 	.main_contanier__call-action__seller--right_side_product img {
 		width: 40%;
 		height: 40%;
