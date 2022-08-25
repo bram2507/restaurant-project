@@ -37,8 +37,12 @@ export default {
 		},
 	},
 	created() {
+		document.addEventListener("scroll", () => {
+			console.log("Scrolling...");
+		});
 		window.addEventListener("resize", () => {
 			this.windowWitdh = window.innerWidth;
+			console.log("Resize");
 		});
 	},
 };

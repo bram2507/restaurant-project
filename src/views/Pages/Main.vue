@@ -1,4 +1,4 @@
-<template>
+<template id="main">
 	<div class="main_contanier">
 		<div class="main_contanier__call-action">
 			<section class="main_contanier__call-action__left">
@@ -87,14 +87,14 @@
 						</div>
 					</li>
 				</ul>
-				<div
-					class="main_contanier__call-action__seller--right_side_product"
-				></div>
+				<div class="main_contanier__call-action__seller--right_side_product">
+					<img src="@/assets/Recurso_6.svg" alt="recurso6" />
+				</div>
 			</section>
 			<section class="main_contanier__call-action__seller--container">
-				<div
-					class="main_contanier__call-action__seller--right_side_product"
-				></div>
+				<div class="main_contanier__call-action__seller--right_side_product">
+					<img src="@/assets/Recurso_14.svg" alt="recurso6" />
+				</div>
 				<div class="main_contanier__call-action__seller--left_side_product">
 					<ul class="main_contanier__call-action__seller--left_side_product">
 						<li>
@@ -131,6 +131,8 @@ export default {
 	},
 	data() {
 		return {
+			desktop: true,
+			windowWitdh: 0,
 			sushi: [
 				"maki sushi",
 				"nigiri sushi",
@@ -140,6 +142,19 @@ export default {
 				"inari sushi",
 			],
 		};
+	},
+	watch: {
+		windowWitdh: function (value) {
+			this.desktop = true;
+			if (value < 956) {
+				this.desktop = false;
+			}
+		},
+	},
+	created() {
+		window.addEventListener("resize", () => {
+			console.log("cosas");
+		});
 	},
 };
 </script>
@@ -262,6 +277,12 @@ li {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+
+.main_contanier__call-action__seller--right_side_product img {
+	width: 40%;
+	height: 40%;
+	image-rendering: optimizeQuality;
 }
 
 .main_contanier__call-action__left img:hover {
