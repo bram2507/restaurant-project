@@ -75,7 +75,7 @@
 						<h2>Japanese Sushi</h2>
 					</li>
 					<li>
-						<h3>Feel the taste of most delicious sushi here.</h3>
+						<h3>Feel the taste of most delicious and creative sushi here.</h3>
 					</li>
 					<li class="sushi_products">
 						<div
@@ -95,29 +95,31 @@
 				<div class="main_contanier__call-action__seller--right_side_product">
 					<img src="@/assets/Recurso_14.svg" alt="recurso6" />
 				</div>
-				<div class="main_contanier__call-action__seller--left_side_product">
-					<ul class="main_contanier__call-action__seller--left_side_product">
-						<li>
-							<h1>Whats trending / トレンド</h1>
-						</li>
-						<li>
-							<h2>Japanese Sushi</h2>
-						</li>
-						<li>
-							<h3>Feel the taste of most delicious sushi here.</h3>
-						</li>
-						<li class="sushi_products">
-							<div
-								class="sushi_products__item"
-								v-for="(item, key) in sushi"
-								:key="key"
-							>
-								<img src="@/assets/icons8-checkmark.svg" alt="icons" />
-								{{ item }}
-							</div>
-						</li>
-					</ul>
-				</div>
+
+				<ul class="main_contanier__call-action__seller--left_side_product">
+					<li>
+						<h1>Whats trending / トレンド</h1>
+					</li>
+					<li>
+						<h2>Japanese Drinks</h2>
+					</li>
+					<li>
+						<h3>
+							Feel the taste of most delicious japanes hot and could drinks
+							here.
+						</h3>
+					</li>
+					<li class="sushi_products">
+						<div
+							class="sushi_products__item"
+							v-for="(item, key) in drinks"
+							:key="key"
+						>
+							<img src="@/assets/icons8-checkmark.svg" alt="icons" />
+							{{ item }}
+						</div>
+					</li>
+				</ul>
 			</section>
 		</div>
 	</div>
@@ -140,6 +142,14 @@ export default {
 				"temaki sushi",
 				"uramaki sushi",
 				"inari sushi",
+			],
+			drinks: [
+				"Oruncha",
+				"Ofukucha",
+				"Sakura Tea",
+				"Kombu-cha",
+				"Aojiru",
+				"Muguicha",
 			],
 		};
 	},
@@ -226,6 +236,7 @@ li {
 	width: 75%;
 	height: auto;
 	flex-wrap: wrap;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .sushi_products__item {
@@ -235,12 +246,17 @@ li {
 	width: 200px;
 	height: auto;
 	font-size: 1.2rem;
+	font-family: "Noto Sans", sans-serif;
 }
 
 .sushi_products__item img {
 	width: 20px;
 	height: 20px;
 	margin-right: 1vh;
+}
+
+.main_contanier__call-action__seller--left_side_product h1 {
+	color: var(--red);
 }
 
 .main_contanier__call-action__seller--container {
@@ -261,12 +277,8 @@ li {
 	flex-direction: column;
 }
 
-.main_contanier__call-action__seller--left_side_product h1 {
-	color: var(--red);
-}
-
 .main_contanier__call-action__seller--right_side_product {
-	width: 50%;
+	min-width: 50%;
 	min-height: 50vh;
 	background-color: var(--cream);
 	background-image: url("@/assets/letters_foods_1.svg");
@@ -283,6 +295,10 @@ li {
 	width: 40%;
 	height: 40%;
 	image-rendering: optimizeQuality;
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-start;
+	margin-right: 5vh;
 }
 
 .main_contanier__call-action__left img:hover {
@@ -305,7 +321,6 @@ li {
 	align-items: center;
 	text-align: center;
 	text-align-last: center;
-	margin-left: 2vh;
 	width: 100%;
 	min-height: 20vh;
 }
@@ -314,23 +329,27 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	text-align: center;
-	text-align-last: center;
-	margin-left: 2vh;
-	width: 100%;
+	margin-left: 4vh;
+	width: 85%;
 	min-height: 5vh;
-	margin-bottom: 5vh;
-}
-
-.main_contanier__call-action__right--subtitle h2 {
-	font-size: 1.5vw;
-	padding: 2vh;
 }
 
 .main_contanier__call-action__right--title h1 {
-	font-size: 8vw;
-	padding: 2vh;
+	width: 65%;
+	font-size: 6vw;
+	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
+	text-align: left;
+	text-align-last: left;
+}
+
+.main_contanier__call-action__right--subtitle h2 {
+	width: 65%;
+	font-size: 3.5vw;
+	padding: 4vh;
+	font-family: "Noto Sans", sans-serif;
+	text-align: left;
+	text-align-last: left;
 }
 
 .main_contanier__call-action_right--customers-says {
@@ -381,13 +400,16 @@ li {
 }
 .buttons__action {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	width: 400px;
 	min-height: 5vh;
+	flex-wrap: wrap;
 }
 .buttons__action_style {
-	width: 150px;
+	margin-top: 2vh;
+	margin-bottom: 2vh;
+	width: 45%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -400,12 +422,12 @@ li {
 	color: var(--white);
 	font-size: 1em;
 	transition: 0.5s ease-in-out;
-	margin-left: 2vh;
-	margin-right: 2vh;
+	margin-left: 1vh;
+	margin-right: 1vh;
 }
 
 .buttons__action_style:hover {
-	width: 150px;
+	width: 50%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -467,8 +489,8 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 25%;
-	min-height: 25vh;
+	min-width: 25%;
+	min-height: 50vh;
 	flex-direction: column;
 	background-color: var(--white);
 }
@@ -478,7 +500,7 @@ li {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 35vh;
+	min-height: 50vh;
 	flex-direction: column;
 	background-color: var(--cream);
 	margin-bottom: 1vh;
@@ -493,7 +515,7 @@ li {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 35vh;
+	min-height: 50vh;
 	flex-direction: column;
 	background-color: var(--cream);
 	background-image: url("@/assets/letters_foods_1.svg");
@@ -529,14 +551,18 @@ li {
 	align-items: center;
 	width: 80%;
 	height: auto;
+	flex-direction: column;
 }
 
 .main_contanier__dished--rigth__title h1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	font-size: 4vw;
 	font-family: "Noto Sans", sans-serif;
 	padding: 4vh;
-	text-align: center;
-	text-align-last: center;
+	text-align: left;
+	text-align-last: left;
 }
 
 .main_contanier__dished--rigth__subtitle {
@@ -548,10 +574,59 @@ li {
 }
 
 .main_contanier__dished--rigth__subtitle h2 {
-	font-size: 1.4vw;
+	font-size: 3vw;
 	font-family: "Noto Sans", sans-serif;
-	padding: 4vh;
+	padding: 2vh;
 	text-align: left;
 	text-align-last: left;
+}
+
+@media screen and (min-width: 200px) and (max-width: 500px) {
+	.main_contanier__call-action__seller--right_side_product img {
+		width: 40%;
+		height: 40%;
+		image-rendering: optimizeQuality;
+		display: flex;
+		justify-content: flex-start;
+		align-content: flex-start;
+		margin-right: 5vh;
+	}
+
+	.main_contanier__call-action__left img:hover {
+		transition: 0.6s ease-in-out;
+	}
+
+	.main_contanier__call-action__seller--container {
+		display: flex;
+		justify-content: center;
+		align-items: center top;
+		width: 100%;
+		min-height: 30vh;
+		flex-wrap: wrap;
+	}
+
+	.main_contanier__call-action__seller--left_side_product {
+		width: 100%;
+		min-height: 50vh;
+		background-color: var(--white);
+		display: flex;
+		justify-content: center;
+		align-items: left;
+		flex-direction: column;
+	}
+
+	.main_contanier__call-action__seller--right_side_product {
+		min-width: 100%;
+		min-height: 50vh;
+		background-color: var(--cream);
+		background-image: url("@/assets/letters_foods_1.svg");
+		background-position: right;
+		background-repeat: no-repeat;
+		background-size: 30%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
 }
 </style>

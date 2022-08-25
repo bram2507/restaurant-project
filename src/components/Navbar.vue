@@ -37,7 +37,7 @@ export default {
 		},
 	},
 	created() {
-		document.addEventListener("scroll", () => {
+		window.addEventListener("scroll", () => {
 			console.log("Scrolling...");
 		});
 		window.addEventListener("resize", () => {

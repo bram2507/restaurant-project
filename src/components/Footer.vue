@@ -60,7 +60,7 @@ export default {
 
 .socail_media {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 	width: 20%;
 	height: auto;
@@ -69,5 +69,36 @@ export default {
 .socail_media img {
 	width: 35px;
 	height: 35px;
+}
+
+@media screen and (max-width: 500px) {
+	.footer-media {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		min-height: 10vh;
+		background-color: var(--cream);
+	}
+
+	.footer_nav {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
+		height: auto;
+		flex-direction: column;
+		margin-top: 2vh;
+		margin-bottom: 2vh;
+	}
+
+	.socail_media {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		width: 100%;
+		height: auto;
+	}
 }
 </style>

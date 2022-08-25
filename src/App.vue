@@ -36,7 +36,7 @@ body {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100vh;
-	font-family: "M PLUS Rounded 1c", sans-serif;
+	font-family: "Noto Sans", sans-serif;
 	text-decoration: none;
 	overflow-x: hidden;
 }
