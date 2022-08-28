@@ -1,4 +1,4 @@
-<template id="main">
+<template>
 	<div class="main_contanier">
 		<div class="main_contanier__call-action">
 			<section class="main_contanier__call-action__left">

@@ -42,6 +42,22 @@ export default {
 			console.log("Resize");
 		});
 	},
+	mounted() {
+		window.addEventListener("scroll", this.runOnScroll);
+		window.addEventListener("wheel", this.runOnWheel);
+	},
+
+	methods: {
+		runOnScroll() {
+			console.log("scroll!");
+		},
+		runOnWheel(event) {
+			console.log("wheel", event.deltaY, event.deltaMode);
+			if (event.deltaY === -2.4096386432647705) {
+				console.log("change style");
+			}
+		},
+	},
 };
 </script>
 <style scoped>
