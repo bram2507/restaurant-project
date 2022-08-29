@@ -11,7 +11,11 @@
 					<span>Restaurante</span>
 				</slot>
 			</router-link>
-			<router-link to="/menu"><span>Menu</span></router-link>
+			<router-link to="/menu">
+				<slot>
+					<span>Menu</span>
+				</slot>
+			</router-link>
 			<router-link to="/specials"><span>Especiales</span></router-link>
 			<router-link to="/booking"><span>Reservas</span></router-link>
 		</div>
@@ -25,7 +29,7 @@ export default {
 		return {
 			desktop: true,
 			windowWitdh: 0,
-			navStyle: "navbar",
+			navStyle: "navbar-active",
 		};
 	},
 	watch: {
@@ -41,22 +45,6 @@ export default {
 			this.windowWitdh = window.innerWidth;
 			console.log("Resize");
 		});
-	},
-	mounted() {
-		window.addEventListener("scroll", this.runOnScroll);
-		window.addEventListener("wheel", this.runOnWheel);
-	},
-
-	methods: {
-		runOnScroll() {
-			console.log("scroll!");
-		},
-		runOnWheel(event) {
-			console.log("wheel", event.deltaY, event.deltaMode);
-			if (event.deltaY === -2.4096386432647705) {
-				console.log("change style");
-			}
-		},
 	},
 };
 </script>
@@ -74,6 +62,23 @@ export default {
 	background-color: transparent;
 	font-family: "M PLUS Rounded 1c", sans-serif;
 	text-decoration: none;
+	z-index: 300;
+}
+.navbar-active {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: auto;
+	padding: 0.5vh;
+	margin: 0px;
+	top: 0;
+	position: fixed;
+	background-color: var(--black);
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	text-decoration: none;
+	color: white;
+	z-index: 300;
 }
 .navbar-scroll {
 	display: flex;
@@ -116,7 +121,12 @@ router-link {
 	margin-left: 2vh;
 	margin-right: 2vh;
 	text-decoration: none;
-	color: var(--black);
+	color: var(--white);
+}
+
+.navbar__navegation:active,
+span:active {
+	text-decoration: none;
 }
 
 .navbar__logo img {

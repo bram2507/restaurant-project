@@ -216,7 +216,7 @@ li {
 .main_contanier__call-action__left img {
 	width: 160%;
 	height: 120%;
-	z-index: 20;
+	z-index: 10;
 	position: sticky;
 	transition: 0.6s ease-in-out;
 }
