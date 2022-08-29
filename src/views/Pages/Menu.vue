@@ -1,6 +1,8 @@
 <template>
 	<div class="menu__contanier">
-		<dynamic-food :food="food" :style="style"></dynamic-food>
+		<dynamic-food :food="starters" />
+		<dynamic-food :food="rolls" />
+		<dynamic-food :food="raice" />
 	</div>
 </template>
 <script>
@@ -13,7 +15,7 @@ export default {
 	},
 	data() {
 		return {
-			food: {
+			starters: {
 				title: "Entrantes",
 				starters: [
 					{
@@ -36,6 +38,52 @@ export default {
 					},
 				],
 			},
+			rolls: {
+				title: "Rolls",
+				starters: [
+					{
+						name: "Ex",
+						desc: "Langostinos tempura, plátano frito, queso crema y cebollino con topping de aguacate, salsa dragón y anguila",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/3f84a7929a1dcaf991d827839e361f4e",
+						price: "12,40€",
+					},
+					{
+						name: "Veggie",
+						desc: "Plátano frito, espárragos, pepino, cebollino y zanahoria, cubierto de sésamo y wakame.",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/4071b01532011a369415d26748ee1de0",
+						price: "10,90€",
+					},
+					{
+						name: "Tentación",
+						desc: "Roll tempurizado con salmón y aguacate con topping de cebolla crunchy y salsa Mayo Sésamo",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/3f8626fda6038c9bc56a8abcf48961d9",
+						price: "13,40€",
+					},
+				],
+			},
+			raice: {
+				title: "Arroz y Noodles",
+				starters: [
+					{
+						name: "Poke de Salmón",
+						desc: "Salmón, edamames, wakame, lombarda, acompañado de arroz, salsa mayo-sesámo cubierto con sesámo negro.",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/15f1285f8287d2e3fe5f2f0f2ff7066b",
+						price: "12,40€",
+					},
+					{
+						name: "Noodles de pollo y vegetales",
+						desc: "Fideos salteados con vegetales, pollo y salsa de ostras.",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/b26d02787abcb83676e9a2e43db797c9",
+						price: "10,90€",
+					},
+					{
+						name: "Noodles de langostinos y vegetales",
+						desc: "Fideos salteados con vegetales, langostinos y salsa de ostras.",
+						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/35cfdf698406f3ff41b4194f3f997b4d",
+						price: "13,40€",
+					},
+				],
+			},
 		};
 	},
 };
@@ -47,7 +95,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: lightskyblue;
+	background-color: var(--white);
 	flex-direction: column;
 }
 </style>

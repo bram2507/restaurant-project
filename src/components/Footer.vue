@@ -1,7 +1,5 @@
 <template>
-	<div class="footer__container">
-		<h2>Footer</h2>
-	</div>
+	<div class="footer__container"></div>
 	<div class="footer-media">
 		<div>
 			<h1>Ashitaka</h1>

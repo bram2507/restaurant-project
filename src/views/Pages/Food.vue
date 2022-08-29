@@ -1,9 +1,9 @@
 <template>
 	<div class="main__food-contanier">
-		<div class="main__food-contanier--title">
-			<h1>{{ food.title }}</h1>
-		</div>
 		<div class="main__food-contanier--items">
+			<div class="main__food-contanier--title">
+				<h1>{{ food.title }}</h1>
+			</div>
 			<div
 				class="main__food-list"
 				v-for="(item, key) in food.starters"
@@ -54,6 +54,7 @@ export default {
 	height: 100vh;
 	background-color: var(--white);
 	flex-direction: column;
+	margin-top: 20vh;
 }
 .main__food-contanier--items {
 	display: flex;
@@ -61,8 +62,8 @@ export default {
 	align-items: center;
 	margin: 0 auto;
 	width: 100%;
-	min-height: 5vh;
-	background-color: var(--red);
+	height: auto;
+	background-color: var(--white);
 	flex-direction: column;
 }
 .main__food-list {
@@ -97,6 +98,7 @@ export default {
 
 .main__food-list--items > div:first-child span {
 	padding: 2vh;
+	text-align: left;
 }
 
 .main__food-list--items > div:last-child {
@@ -119,5 +121,10 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+	height: auto;
+
+	font-size: 3vw;
+	font-family: "Noto Sans", sans-serif;
 }
 </style>
