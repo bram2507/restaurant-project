@@ -49,21 +49,6 @@ export default {
 };
 </script>
 <style scoped>
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	height: auto;
-	padding: 0.5vh;
-	margin: 0px;
-	top: 0;
-	position: fixed;
-	background-color: transparent;
-	font-family: "M PLUS Rounded 1c", sans-serif;
-	text-decoration: none;
-	z-index: 300;
-}
 .navbar-active {
 	display: flex;
 	justify-content: space-between;
@@ -79,6 +64,9 @@ export default {
 	text-decoration: none;
 	color: white;
 	z-index: 300;
+}
+.navbar__logo__name {
+	margin-left: 2vh;
 }
 .navbar-scroll {
 	display: flex;

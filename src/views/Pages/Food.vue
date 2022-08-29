@@ -1,0 +1,123 @@
+<template>
+	<div class="main__food-contanier">
+		<div class="main__food-contanier--title">
+			<h1>{{ food.title }}</h1>
+		</div>
+		<div class="main__food-contanier--items">
+			<div
+				class="main__food-list"
+				v-for="(item, key) in food.starters"
+				:key="key"
+			>
+				<div class="main__food-list--items">
+					<div>
+						<span>{{ item.name }}</span>
+						<span>{{ item.desc }}</span>
+						<span>{{ item.price }}</span>
+					</div>
+					<div>
+						<img :src="item.img" alt="food-image" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+export default {
+	name: "food-menu",
+	components: {},
+	props: {
+		food: {
+			type: Array,
+			required: true,
+		},
+		style: {
+			type: Object,
+			required: true,
+		},
+	},
+	data() {
+		return {};
+	},
+	created() {
+		console.log(this.food);
+	},
+};
+</script>
+<style scoped>
+.main__food-contanier {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--white);
+	flex-direction: column;
+}
+.main__food-contanier--items {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 100%;
+	min-height: 5vh;
+	background-color: var(--red);
+	flex-direction: column;
+}
+.main__food-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 85%;
+	height: auto;
+	border-radius: 1vh;
+	background-color: var(--white);
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+	margin-bottom: 2vh;
+}
+.main__food-list--items {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	min-height: auto;
+	flex-direction: row;
+}
+
+.main__food-list--items > div:first-child {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 80%;
+	min-height: 5vh;
+	flex-direction: column;
+}
+
+.main__food-list--items > div:first-child span {
+	padding: 2vh;
+}
+
+.main__food-list--items > div:last-child {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	height: auto;
+	border-radius: 1vh;
+	padding: 2vh;
+}
+
+.main__food-list--items > div:last-child img {
+	border-radius: 1vh;
+	width: 100%;
+	height: 100%;
+}
+
+.main__food-contanier--title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
