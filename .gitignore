@@ -6,6 +6,11 @@ node_modules
 # local env files
 .env.local
 .env.*.local
+.firebaserc
+.firebase.json
+hosting.ZGIzdA.cache
+firebase-hosting-merge.yml
+firebase-hosting-pull-request.yml
 
 # Log files
 npm-debug.log*

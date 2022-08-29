@@ -11,7 +11,11 @@
 					<span>Restaurante</span>
 				</slot>
 			</router-link>
-			<router-link to="/menu"><span>Menu</span></router-link>
+			<router-link to="/menu">
+				<slot>
+					<span>Menu</span>
+				</slot>
+			</router-link>
 			<router-link to="/specials"><span>Especiales</span></router-link>
 			<router-link to="/booking"><span>Reservas</span></router-link>
 		</div>
@@ -25,7 +29,7 @@ export default {
 		return {
 			desktop: true,
 			windowWitdh: 0,
-			navStyle: "navbar",
+			navStyle: "navbar-active",
 		};
 	},
 	watch: {
@@ -45,7 +49,7 @@ export default {
 };
 </script>
 <style scoped>
-.navbar {
+.navbar-active {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -55,9 +59,14 @@ export default {
 	margin: 0px;
 	top: 0;
 	position: fixed;
-	background-color: transparent;
+	background-color: var(--black);
 	font-family: "M PLUS Rounded 1c", sans-serif;
 	text-decoration: none;
+	color: white;
+	z-index: 300;
+}
+.navbar__logo__name {
+	margin-left: 2vh;
 }
 .navbar-scroll {
 	display: flex;
@@ -100,7 +109,12 @@ router-link {
 	margin-left: 2vh;
 	margin-right: 2vh;
 	text-decoration: none;
-	color: var(--black);
+	color: var(--white);
+}
+
+.navbar__navegation:active,
+span:active {
+	text-decoration: none;
 }
 
 .navbar__logo img {
