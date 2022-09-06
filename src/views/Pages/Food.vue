@@ -29,10 +29,6 @@ export default {
 	components: {},
 	props: {
 		food: {
-			type: Array,
-			required: true,
-		},
-		style: {
 			type: Object,
 			required: true,
 		},
@@ -40,9 +36,7 @@ export default {
 	data() {
 		return {};
 	},
-	created() {
-		console.log(this.food);
-	},
+	created() {},
 };
 </script>
 <style scoped>
@@ -77,7 +71,14 @@ export default {
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
 	margin-bottom: 2vh;
+	transition: 0.3s ease-in-out;
 }
+
+.main__food-list:hover {
+	transition: 0.3s ease-in-out;
+	transform: translateX(-50px);
+}
+
 .main__food-list--items {
 	display: flex;
 	justify-content: space-around;
