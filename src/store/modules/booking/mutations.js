@@ -1,14 +1,19 @@
 const addItem = (state, item) => {
-  console.log("Añadir item", item);
-  state.booking.push(item);
+  item.id = Date.now();
+  state.booking[item.id] = item;
 };
 
 const deleteItem = (state, item) => {
-  console.log("Eliminar de la compra", item);
-  state.booking = null;
+  let obj = state.booking.filter((e) => e.id !== item.id);
+  state.booking = obj;
+};
+
+const clearCart = (state) => {
+  state.booking = [];
 };
 
 export default {
   addItem,
   deleteItem,
+  clearCart,
 };

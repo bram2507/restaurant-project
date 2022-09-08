@@ -14,6 +14,7 @@
 						<span>{{ item.name }}</span>
 						<span>{{ item.desc }}</span>
 						<span>{{ item.price }}</span>
+						<button @click="addItem(item)">añadir</button>
 					</div>
 					<div>
 						<img :src="item.img" alt="food-image" />
@@ -37,6 +38,11 @@ export default {
 		return {};
 	},
 	created() {},
+	methods: {
+		addItem(item) {
+			this.$store.dispatch("addItem", item);
+		},
+	},
 };
 </script>
 <style scoped>
@@ -74,10 +80,10 @@ export default {
 	transition: 0.3s ease-in-out;
 }
 
-.main__food-list:hover {
+/* .main__food-list:hover {
 	transition: 0.3s ease-in-out;
-	transform: translateX(-50px);
-}
+	transform: translateY(10px);
+} */
 
 .main__food-list--items {
 	display: flex;
@@ -92,7 +98,7 @@ export default {
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	width: 80%;
+	width: 65%;
 	min-height: 5vh;
 	flex-direction: column;
 }
@@ -100,6 +106,35 @@ export default {
 .main__food-list--items > div:first-child span {
 	padding: 2vh;
 	text-align: left;
+}
+
+.main__food-list--items button {
+	width: 120px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	border: 2px solid var(--black);
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+	margin-left: 2vh;
+	padding: 2vh;
+	margin-bottom: 2vh;
+}
+
+.main__food-list--items button:hover {
+	border-radius: 4vh;
+	outline: none;
+	border: 2px solid var(--black);
+	background-color: var(--white);
+	color: var(--black);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
 }
 
 .main__food-list--items > div:last-child {

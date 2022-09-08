@@ -3,7 +3,7 @@ import getters from "@/store/modules/booking/getters";
 import mutations from "@/store/modules/booking/mutations";
 
 const state = {
-  booking: [],
+  booking: {},
 };
 
 export default {
