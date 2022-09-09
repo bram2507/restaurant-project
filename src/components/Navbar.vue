@@ -16,14 +16,50 @@
 			<router-link to="/booking"><span>Reservas</span></router-link>
 			<div>
 				<div @click="showCart">
-					Cesta <sup>{{ this.length }}</sup>
+					<svg
+						width="35"
+						height="35"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M16.584 17.662 18.25 9.75H5.75l1.666 7.912a2 2 0 0 0 1.957 1.588h5.254a2 2 0 0 0 1.957-1.588Z"
+						></path>
+						<path d="M8.75 9.5V7.75a3 3 0 0 1 3-3h.5a3 3 0 0 1 3 3V9.5"></path>
+						<path d="M19.25 9.75H4.75"></path>
+					</svg>
+					<sup>{{ this.length }}</sup>
 				</div>
 				<div v-if="!cart"></div>
 			</div>
 		</div>
 		<div v-else>
 			<div>
-				<div @click="showCart">Cesta {{ this.length }}</div>
+				<div @click="showCart">
+					<svg
+						width="35"
+						height="35"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="1.5"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M16.584 17.662 18.25 9.75H5.75l1.666 7.912a2 2 0 0 0 1.957 1.588h5.254a2 2 0 0 0 1.957-1.588Z"
+						></path>
+						<path d="M8.75 9.5V7.75a3 3 0 0 1 3-3h.5a3 3 0 0 1 3 3V9.5"></path>
+						<path d="M19.25 9.75H4.75"></path>
+					</svg>
+					<sup>{{ this.length }}</sup>
+				</div>
 			</div>
 		</div>
 		<div v-if="!cart" class="cart__preview">
@@ -34,10 +70,48 @@
 					v-for="(item, key) in Object.values(list)"
 					:key="key"
 				>
-					<div v-if="item.cant">
+					<div v-if="item.cant > 0">
 						{{ item.name.replaceAll("-", " ") }} ({{ item.cant }})
 					</div>
-					<div v-if="item.cant">{{ item.price }} €</div>
+					<div v-if="item.cant > 0">{{ item.price }} €</div>
+					<div v-if="item.cant > 0" @click="addItem(item)">
+						<svg
+							width="15"
+							height="15"
+							fill="none"
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M12 2a10 10 0 1 0 0 20 10 10 0 1 0 0-20z"></path>
+							<path d="M12 8v8"></path>
+							<path d="M8 12h8"></path>
+						</svg>
+					</div>
+					<div
+						class="delete__svg"
+						v-if="item.cant > 0"
+						@click="deleteItem(item)"
+					>
+						<svg
+							width="15"
+							height="15"
+							fill="none"
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path d="M12 2a10 10 0 1 0 0 20 10 10 0 1 0 0-20z"></path>
+							<path d="m15 9-6 6"></path>
+							<path d="m9 9 6 6"></path>
+						</svg>
+					</div>
 				</div>
 			</div>
 			<div class="cart__preview--container">
@@ -57,7 +131,7 @@
 					<div>
 						<div>Total</div>
 						<div>
-							{{ parseFloat(this.list.subTotal + this.list.iva).toFixed(2) }}
+							{{ total() }}
 							€
 						</div>
 					</div>
@@ -98,7 +172,6 @@ export default {
 				}
 				return e;
 			});
-
 			return cant;
 		},
 	},
@@ -114,6 +187,7 @@ export default {
 			handler(value) {
 				this.$store.dispatch("iva", this.iva());
 				this.$store.dispatch("subTotal", this.subTotal());
+
 				return value;
 			},
 		},
@@ -125,6 +199,12 @@ export default {
 		});
 	},
 	methods: {
+		addItem(item) {
+			this.$store.dispatch("addItem", item);
+		},
+		deleteItem(item) {
+			this.$store.dispatch("deleteItem", item);
+		},
 		showCart() {
 			this.cart = !this.cart;
 		},
@@ -140,6 +220,10 @@ export default {
 		},
 		iva() {
 			return (this.subTotal() * 0.21).toFixed(2);
+		},
+		total() {
+			let total = parseFloat(this.list.subTotal) + parseFloat(this.list.iva);
+			return parseFloat(total).toFixed(2);
 		},
 	},
 };
@@ -223,7 +307,7 @@ span:active {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 200px;
+	width: 250px;
 	min-height: 5vh;
 	background-color: var(--white);
 	border-radius: 2vh;
@@ -235,6 +319,12 @@ span:active {
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 	animation: fadeIn 0.2s ease-in-out;
 	font-size: 0.8rem;
+}
+
+.delete__svg {
+	margin-left: 1vh;
+	margin-right: 1vh;
+	cursor: pointer;
 }
 
 .cart__preview div {
