@@ -1,9 +1,9 @@
 <template>
 	<div class="main__food-contanier">
-		<div class="main__food-contanier--title">
-			<h1>{{ food.title }}</h1>
-		</div>
 		<div class="main__food-contanier--items">
+			<div class="main__food-contanier--title">
+				<h1>{{ food.title }}</h1>
+			</div>
 			<div
 				class="main__food-list"
 				v-for="(item, key) in food.starters"
@@ -11,9 +11,11 @@
 			>
 				<div class="main__food-list--items">
 					<div>
-						<span>{{ item.name }}</span>
+						<span>{{ item.name.replaceAll("-", " ") }}</span>
 						<span>{{ item.desc }}</span>
 						<span>{{ item.price }}</span>
+						<button @click="addItem(item)">añadir</button>
+						<button @click="deleteItem(item)">eliminar</button>
 					</div>
 					<div>
 						<img :src="item.img" alt="food-image" />
@@ -24,15 +26,12 @@
 	</div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
 	name: "food-menu",
 	components: {},
 	props: {
 		food: {
-			type: Array,
-			required: true,
-		},
-		style: {
 			type: Object,
 			required: true,
 		},
@@ -40,8 +39,28 @@ export default {
 	data() {
 		return {};
 	},
-	created() {
-		console.log(this.food);
+	computed: {
+		...mapGetters({
+			$getBooking: "getBooking",
+		}),
+		list() {
+			return this.$getBooking;
+		},
+	},
+	created() {},
+	methods: {
+		addItem(item) {
+			this.$store.dispatch("addItem", item);
+		},
+		deleteItem(item) {
+			this.$store.dispatch("deleteItem", item);
+		},
+		hasFood(item) {
+			let food = false;
+			console.log(item.cant);
+			item.cant > 0 ? (food = true) : (food = false);
+			return food;
+		},
 	},
 };
 </script>
@@ -54,6 +73,7 @@ export default {
 	height: 100vh;
 	background-color: var(--white);
 	flex-direction: column;
+	margin-top: 60vh;
 }
 .main__food-contanier--items {
 	display: flex;
@@ -61,8 +81,8 @@ export default {
 	align-items: center;
 	margin: 0 auto;
 	width: 100%;
-	min-height: 5vh;
-	background-color: var(--red);
+	height: auto;
+	background-color: var(--white);
 	flex-direction: column;
 }
 .main__food-list {
@@ -76,7 +96,14 @@ export default {
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
 	margin-bottom: 2vh;
+	transition: 0.3s ease-in-out;
 }
+
+/* .main__food-list:hover {
+	transition: 0.3s ease-in-out;
+	transform: translateY(10px);
+} */
+
 .main__food-list--items {
 	display: flex;
 	justify-content: space-around;
@@ -90,13 +117,43 @@ export default {
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	width: 80%;
+	width: 65%;
 	min-height: 5vh;
 	flex-direction: column;
 }
 
 .main__food-list--items > div:first-child span {
 	padding: 2vh;
+	text-align: left;
+}
+
+.main__food-list--items button {
+	width: 120px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	border: 2px solid var(--black);
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+	margin-left: 2vh;
+	padding: 2vh;
+	margin-bottom: 2vh;
+}
+
+.main__food-list--items button:hover {
+	border-radius: 4vh;
+	outline: none;
+	border: 2px solid var(--black);
+	background-color: var(--white);
+	color: var(--black);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
 }
 
 .main__food-list--items > div:last-child {
@@ -119,5 +176,10 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+	height: auto;
+
+	font-size: 3vw;
+	font-family: "Noto Sans", sans-serif;
 }
 </style>

@@ -6,15 +6,15 @@
 			</section>
 			<div class="main_contanier__call-action__right">
 				<section class="main_contanier__call-action__right--title">
-					<h1>Feel the taste of Japanes food</h1>
+					<h1>En Yakuza hacemos las cosas diferente.</h1>
 				</section>
 				<section class="main_contanier__call-action__right--subtitle">
-					<h2>Feel the taste of the japanes food from anywhere and anytime.</h2>
+					<h2>Olvídate del clásico sushi y prepárate para abrir grande.</h2>
 				</section>
 				<section class="main_contanier__call-action__right--buttons">
 					<div class="buttons__action">
-						<button class="buttons__action_style">Order now</button>
-						<button class="buttons__action_style">Groups</button>
+						<button class="buttons__action_style">Pedir ahora</button>
+						<button class="buttons__action_style">Menu de grupos</button>
 					</div>
 				</section>
 				<section class="main_contanier__call-action_right--customers-says">
@@ -23,7 +23,7 @@
 							<h2><strong class="number">24K+ </strong></h2>
 						</div>
 						<div>
-							<h2>&nbsp;Happy Customers</h2>
+							<h2>&nbsp;Clientes Satisfechos</h2>
 						</div>
 					</div>
 					<div class="customers-says__number__testimonies">
@@ -32,8 +32,8 @@
 						</div>
 						<div class="testemonies--paragraph">
 							<p>
-								"This is the best japan food experience i ever had. It is my
-								favorite palce".
+								"Esta es la mejor experiencia de comida japonesa que he tenido.
+								es mi lugar favorito".
 							</p>
 						</div>
 					</div>
@@ -52,13 +52,12 @@
 				</section>
 				<div class="main_contanier__dished--rigth">
 					<section class="main_contanier__dished--rigth__title">
-						<h1>Our mission is to bring true Japanese flavours to you.</h1>
+						<h1>SUSHI YAKUZA, SUSHI PARECE, JAPO NO ES</h1>
 					</section>
 					<section class="main_contanier__dished--rigth__subtitle">
 						<h2>
-							We will continue to provide you the experience of Omotenashi, the
-							japanes mindset of hospitatily, with our shopping and dinning for
-							customers.
+							La creatividad ha sido su mejor insignia, introduciendo en el
+							sushi ingredientes como el plátano por primera vez en España.
 						</h2>
 					</section>
 				</div>
@@ -164,6 +163,7 @@ export default {
 			}
 		},
 	},
+	mounted() {},
 };
 </script>
 
@@ -340,7 +340,7 @@ li {
 
 .main_contanier__call-action__right--title h1 {
 	width: 65%;
-	font-size: 6vw;
+	font-size: 4vw;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -349,7 +349,7 @@ li {
 
 .main_contanier__call-action__right--subtitle h2 {
 	width: 65%;
-	font-size: 3.5vw;
+	font-size: 2.5vw;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -580,7 +580,7 @@ li {
 }
 
 .main_contanier__dished--rigth__subtitle h2 {
-	font-size: 3vw;
+	font-size: 2.5vw;
 	font-family: "Noto Sans", sans-serif;
 	padding: 2vh;
 	text-align: left;
