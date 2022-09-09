@@ -73,7 +73,7 @@ export default {
 	height: 100vh;
 	background-color: var(--white);
 	flex-direction: column;
-	margin-top: 40vh;
+	margin-top: 60vh;
 }
 .main__food-contanier--items {
 	display: flex;

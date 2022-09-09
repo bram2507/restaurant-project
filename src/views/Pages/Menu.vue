@@ -70,7 +70,6 @@ export default {
 				title: "Arroz y Noodles",
 				starters: [
 					{
-						id: null,
 						name: "Poke-de-Salmón",
 						desc: "Salmón, edamames, wakame, lombarda, acompañado de arroz, salsa mayo-sesámo cubierto con sesámo negro.",
 						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/15f1285f8287d2e3fe5f2f0f2ff7066b",

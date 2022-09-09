@@ -16,43 +16,53 @@
 			<router-link to="/booking"><span>Reservas</span></router-link>
 			<div>
 				<div @click="showCart">
-					Cesta <sup>{{ this.list.length }}</sup>
+					Cesta <sup>{{ this.length }}</sup>
 				</div>
 				<div v-if="!cart"></div>
 			</div>
 		</div>
 		<div v-else>
 			<div>
-				<div @click="showCart">Cesta {{ this.list.length }}</div>
+				<div @click="showCart">Cesta {{ this.length }}</div>
 			</div>
 		</div>
 		<div v-if="!cart" class="cart__preview">
 			<div class="cart__preview--title"><h2>Lista de Pedido</h2></div>
-			<ul
-				class="cart__preview--items"
-				v-for="(item, key) in Object.values(list)"
-				:key="key"
-			>
-				<li v-if="item.cant">
-					{{ item.name.replaceAll("-", " ") }} ({{ item.cant }})
-				</li>
-				<li v-if="item.cant">{{ item.price }} €</li>
-			</ul>
-			<div class="cart__preview--container">
-				<div class="cart__preview--total">
-					<ul>
-						<li>SubTotal</li>
-						<li>{{ this.list.subTotal }} €</li>
-					</ul>
-				</div>
-				<div class="cart__preview--total">
-					<ul>
-						<li>IVA</li>
-						<li>{{ this.list.iva }} €</li>
-					</ul>
+			<div class="cart__preview--items__scroll">
+				<div
+					class="cart__preview--items"
+					v-for="(item, key) in Object.values(list)"
+					:key="key"
+				>
+					<div v-if="item.cant">
+						{{ item.name.replaceAll("-", " ") }} ({{ item.cant }})
+					</div>
+					<div v-if="item.cant">{{ item.price }} €</div>
 				</div>
 			</div>
-
+			<div class="cart__preview--container">
+				<div class="cart__preview--total">
+					<div>
+						<div>SubTotal</div>
+						<div>{{ this.list.subTotal }} €</div>
+					</div>
+				</div>
+				<div class="cart__preview--total">
+					<div>
+						<div>IVA</div>
+						<div>{{ this.list.iva }} €</div>
+					</div>
+				</div>
+				<div class="cart__preview--total">
+					<div>
+						<div>Total</div>
+						<div>
+							{{ parseFloat(this.list.subTotal + this.list.iva).toFixed(2) }}
+							€
+						</div>
+					</div>
+				</div>
+			</div>
 			<div v-if="subTotal() > 0" class="cart__preview--title">
 				<button>Gestionar Pedido</button>
 			</div>
@@ -80,6 +90,17 @@ export default {
 		list() {
 			return this.$getBooking;
 		},
+		length() {
+			var cant = 0;
+			Object.values(this.list).map((e) => {
+				if (e.cant >= 0) {
+					cant += e.cant;
+				}
+				return e;
+			});
+
+			return cant;
+		},
 	},
 	watch: {
 		windowWitdh: function (value) {
@@ -91,12 +112,8 @@ export default {
 		list: {
 			deep: true,
 			handler(value) {
-				let subtotal = 1;
-				Object.values(value).map((e) => {
-					subtotal += parseFloat(e.price) * parseInt(e.cant);
-					return e;
-				});
-				console.log(parseInt(subtotal), value);
+				this.$store.dispatch("iva", this.iva());
+				this.$store.dispatch("subTotal", this.subTotal());
 				return value;
 			},
 		},
@@ -114,8 +131,10 @@ export default {
 		subTotal() {
 			var subtotal = 0;
 			Object.values(this.list).map((e) => {
-				subtotal += parseFloat(e.price) * parseInt(e.cant);
-				return e;
+				if (e.cant >= 0) {
+					subtotal += parseFloat(e.price) * parseInt(e.cant);
+					return e;
+				}
 			});
 			return parseFloat(subtotal).toFixed(2);
 		},
@@ -205,21 +224,20 @@ span:active {
 	align-items: center;
 	flex-direction: column;
 	width: 200px;
-	height: 45vh;
-	overflow-y: scroll;
+	min-height: 5vh;
 	background-color: var(--white);
 	border-radius: 2vh;
 	z-index: 300;
 	position: fixed;
 	padding: 3vh;
 	top: 80px;
-	right: 5%;
+	right: 2%;
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 	animation: fadeIn 0.2s ease-in-out;
 	font-size: 0.8rem;
 }
 
-.cart__preview li {
+.cart__preview div {
 	list-style: none;
 	color: var(--black);
 }
@@ -241,8 +259,15 @@ span:active {
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	height: 25vh;
+	height: auto;
 	padding: 0.1vh;
+}
+
+.cart__preview--items__scroll {
+	width: 100%;
+	height: 25vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 .cart__preview--container {
@@ -250,9 +275,9 @@ span:active {
 	justify-content: space-between;
 	align-content: center;
 	flex-direction: column;
-	width: 100%;
+	width: 90%;
 	height: auto;
-	border-top: 1px solid var(--black);
+	border-top: 1px dashed var(--grey);
 	padding: 1vh;
 	margin-top: 3vh;
 	margin-bottom: 3vh;
@@ -264,25 +289,27 @@ span:active {
 	height: auto;
 	flex-direction: row;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-around;
 	align-items: center;
 }
 
-.cart__preview--total ul {
+.cart__preview--total div {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-end;
 	align-items: center;
 	width: 100%;
 	height: auto;
 }
-.cart__preview--items li:first-child {
+.cart__preview--items div:first-child {
 	width: 75%;
 	height: auto;
+	padding: 0.5vh;
 }
 
-.cart__preview--items li:nth-child(2) {
+.cart__preview--items div:nth-child(2) {
 	width: 30%;
 	height: auto;
+	padding: 0.5vh;
 }
 
 .cart__preview button {
@@ -320,10 +347,7 @@ span:active {
 		opacity: 0;
 		transition: 0.2s ease-in-out;
 	}
-	50% {
-		opacity: 0.5;
-		transition: 0.2s ease-in-out;
-	}
+
 	100% {
 		opacity: 1;
 		transition: 0.2s ease-in-out;
