@@ -11,10 +11,11 @@
 			>
 				<div class="main__food-list--items">
 					<div>
-						<span>{{ item.name }}</span>
+						<span>{{ item.name.replaceAll("-", " ") }}</span>
 						<span>{{ item.desc }}</span>
 						<span>{{ item.price }}</span>
 						<button @click="addItem(item)">añadir</button>
+						<button @click="deleteItem(item)">eliminar</button>
 					</div>
 					<div>
 						<img :src="item.img" alt="food-image" />
@@ -25,6 +26,7 @@
 	</div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
 	name: "food-menu",
 	components: {},
@@ -37,10 +39,27 @@ export default {
 	data() {
 		return {};
 	},
+	computed: {
+		...mapGetters({
+			$getBooking: "getBooking",
+		}),
+		list() {
+			return this.$getBooking;
+		},
+	},
 	created() {},
 	methods: {
 		addItem(item) {
 			this.$store.dispatch("addItem", item);
+		},
+		deleteItem(item) {
+			this.$store.dispatch("deleteItem", item);
+		},
+		hasFood(item) {
+			let food = false;
+			console.log(item.cant);
+			item.cant > 0 ? (food = true) : (food = false);
+			return food;
 		},
 	},
 };
@@ -54,7 +73,7 @@ export default {
 	height: 100vh;
 	background-color: var(--white);
 	flex-direction: column;
-	margin-top: 20vh;
+	margin-top: 40vh;
 }
 .main__food-contanier--items {
 	display: flex;

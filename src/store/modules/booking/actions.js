@@ -5,4 +5,12 @@ const addItem = ({ commit }, item) => {
 const deleteItem = ({ commit }, item) => {
   commit("deleteItem", item);
 };
-export default { addItem, deleteItem };
+
+const subTotal = ({ commit }, subTotal) => {
+  commit("subTotal", subTotal);
+};
+
+const iva = ({ commit }, iva) => {
+  commit("iva", iva);
+};
+export default { addItem, deleteItem, subTotal, iva };

@@ -30,14 +30,31 @@
 			<div class="cart__preview--title"><h2>Lista de Pedido</h2></div>
 			<ul
 				class="cart__preview--items"
-				v-for="(item, key) in list"
-				:key="key + item.id"
+				v-for="(item, key) in Object.values(list)"
+				:key="key"
 			>
-				<li>{{ item.name }} ({{ groupItem(item) }})</li>
-				<!-- <li>{{ priceItem(item) }} €</li> -->
+				<li v-if="item.cant">
+					{{ item.name.replaceAll("-", " ") }} ({{ item.cant }})
+				</li>
+				<li v-if="item.cant">{{ item.price }} €</li>
 			</ul>
-			<div v-if="list.length" class="cart__preview--title">
-				<button></button>
+			<div class="cart__preview--container">
+				<div class="cart__preview--total">
+					<ul>
+						<li>SubTotal</li>
+						<li>{{ this.list.subTotal }} €</li>
+					</ul>
+				</div>
+				<div class="cart__preview--total">
+					<ul>
+						<li>IVA</li>
+						<li>{{ this.list.iva }} €</li>
+					</ul>
+				</div>
+			</div>
+
+			<div v-if="subTotal() > 0" class="cart__preview--title">
+				<button>Gestionar Pedido</button>
 			</div>
 		</div>
 	</div>
@@ -52,6 +69,7 @@ export default {
 			cart: false,
 			desktop: true,
 			windowWitdh: 0,
+			sub: 0,
 			navStyle: "navbar-active",
 		};
 	},
@@ -60,7 +78,7 @@ export default {
 			$getBooking: "getBooking",
 		}),
 		list() {
-			return Object.values(this.$getBooking);
+			return this.$getBooking;
 		},
 	},
 	watch: {
@@ -73,14 +91,13 @@ export default {
 		list: {
 			deep: true,
 			handler(value) {
-				const groupByName = Object.values(value).reduce((group, food) => {
-					const { name } = food;
-					group[name] = group[name] ?? [];
-					group[name].push(food);
-					return group;
-				}, {});
-
-				return groupByName;
+				let subtotal = 1;
+				Object.values(value).map((e) => {
+					subtotal += parseFloat(e.price) * parseInt(e.cant);
+					return e;
+				});
+				console.log(parseInt(subtotal), value);
+				return value;
 			},
 		},
 	},
@@ -94,18 +111,16 @@ export default {
 		showCart() {
 			this.cart = !this.cart;
 		},
-		groupItem(item) {
-			let arr = Object.values(this.$getBooking);
-			arr = arr.filter((e) => e.name === item.name);
-			this.cant = arr.length;
-			return arr.length;
+		subTotal() {
+			var subtotal = 0;
+			Object.values(this.list).map((e) => {
+				subtotal += parseFloat(e.price) * parseInt(e.cant);
+				return e;
+			});
+			return parseFloat(subtotal).toFixed(2);
 		},
-		priceItem(item) {
-			let price = parseFloat(item.price) * parseInt(this.cant);
-			return parseFloat(price).toFixed(2);
-		},
-		deleteItem(item) {
-			this.$store.dispatch("deleteItem", item);
+		iva() {
+			return (this.subTotal() * 0.21).toFixed(2);
 		},
 	},
 };
@@ -190,7 +205,8 @@ span:active {
 	align-items: center;
 	flex-direction: column;
 	width: 200px;
-	height: auto;
+	height: 45vh;
+	overflow-y: scroll;
 	background-color: var(--white);
 	border-radius: 2vh;
 	z-index: 300;
@@ -216,8 +232,8 @@ span:active {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	height: auto;
+	width: 200px;
+	min-height: 2vh;
 }
 
 .cart__preview--items {
@@ -225,10 +241,40 @@ span:active {
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	height: auto;
+	height: 25vh;
 	padding: 0.1vh;
 }
 
+.cart__preview--container {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	flex-direction: column;
+	width: 100%;
+	height: auto;
+	border-top: 1px solid var(--black);
+	padding: 1vh;
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+}
+
+.cart__preview--total {
+	color: var(--black);
+	width: 100%;
+	height: auto;
+	flex-direction: row;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.cart__preview--total ul {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	height: auto;
+}
 .cart__preview--items li:first-child {
 	width: 75%;
 	height: auto;
@@ -240,8 +286,8 @@ span:active {
 }
 
 .cart__preview button {
-	width: 120px;
-	height: 50px;
+	width: 200px;
+	height: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -255,7 +301,7 @@ span:active {
 	transition: 0.5s ease-in-out;
 	margin-left: 2vh;
 	padding: 2vh;
-
+	position: relative;
 	margin-bottom: 2vh;
 }
 

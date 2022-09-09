@@ -1,11 +1,19 @@
 const addItem = (state, item) => {
-  item.id = Date.now();
-  state.booking[item.id] = item;
+  state.booking[item.name].cant++;
 };
 
 const deleteItem = (state, item) => {
-  let obj = state.booking.filter((e) => e.id !== item.id);
-  state.booking = obj;
+  state.booking[item.name].cant <= 0
+    ? (state.booking[item.name].cant = 0)
+    : state.booking[item.name].cant--;
+};
+
+const iva = (state, iva) => {
+  state.booking.iva = iva;
+};
+
+const subTotal = (state, subTotal) => {
+  state.booking.subTotal = subTotal;
 };
 
 const clearCart = (state) => {
@@ -15,5 +23,7 @@ const clearCart = (state) => {
 export default {
   addItem,
   deleteItem,
+  iva,
+  subTotal,
   clearCart,
 };
