@@ -10,7 +10,7 @@ const state = {
       cant: 0,
     },
     "Gyozas-de-Pollo": {
-      name: "Gyozas-Vegetales",
+      name: "Gyozas-de-Pollo",
       price: "5.40",
       cant: 0,
     },

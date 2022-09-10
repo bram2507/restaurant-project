@@ -25,14 +25,12 @@ export default {
 						price: "4.40€",
 					},
 					{
-						id: null,
 						name: "Gyozas-de-Pollo",
 						desc: "4 unidades de empanaditas fritas con pollo y vegetales.",
 						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/1165f88e8963be7b9cb470e6bbb61d4b",
 						price: "5,40€",
 					},
 					{
-						id: null,
 						name: "Gyozas-Vegetales",
 						desc: "Empanaditas fritas rellenas de vegetales, acompañadas de salsa ponzu (4 unidades)",
 						img: "https://just-eat-prod-eu-res.cloudinary.com/image/upload/c_fill,q_auto,f_auto,h_99,w_132,dpr_2.0/v1/es/dishes/brg_816/b5f7abba7b58d824e51e9a7f1fafa9d2",
