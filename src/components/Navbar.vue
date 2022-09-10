@@ -62,7 +62,7 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="!cart" class="cart__preview">
+		<div v-if="cart" class="cart__preview">
 			<div class="cart__preview--title"><h2>Lista de Pedido</h2></div>
 			<div class="cart__preview--items__scroll">
 				<div
