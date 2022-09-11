@@ -183,6 +183,9 @@ export default {
 	watch: {
 		windowWitdh: function (value) {
 			this.desktop = true;
+			if (value > 956 && value < 1200) {
+				this.desktop = true;
+			}
 			if (value < 956) {
 				this.desktop = false;
 			}
@@ -212,6 +215,9 @@ export default {
 		},
 		clearCart() {
 			this.$store.dispatch("clearCart");
+			setTimeout(() => {
+				this.cart = false;
+			}, 1000);
 		},
 		showCart() {
 			this.cart = !this.cart;
