@@ -20,6 +20,11 @@ const routes = [
     name: "booking",
     component: () => import("../views/Pages/Booking.vue"),
   },
+  {
+    path: "/groups",
+    name: "groups",
+    component: () => import("../views/Pages/GroupMenu.vue"),
+  },
 ];
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

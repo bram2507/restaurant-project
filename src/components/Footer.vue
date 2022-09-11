@@ -1,6 +1,6 @@
 <template>
-	<div class="footer__container"></div>
 	<div class="footer-media">
+		<div class="footer__container"></div>
 		<div>
 			<h1>Ashitaka</h1>
 		</div>
@@ -11,14 +11,11 @@
 			<router-link to="/booking"><span>Reservas</span></router-link>
 		</div>
 		<div class="socail_media">
-			<div>
+			<div @click="goToInstagram()">
 				<img src="@/assets/instagram.svg" alt="" />
 			</div>
-			<div>
+			<div @click="goToFacebook()">
 				<img src="@/assets/facebook.svg" alt="" />
-			</div>
-			<div>
-				<img src="@/assets/twitter.svg" alt="" />
 			</div>
 		</div>
 	</div>
@@ -27,6 +24,14 @@
 <script>
 export default {
 	name: "footer-content",
+	methods: {
+		goToInstagram() {
+			window.open("https://www.instagram.com/sushiyakuza/", "_blank");
+		},
+		goToFacebook() {
+			window.open("https://www.facebook.com/sushiyakuza.es/", "_blank");
+		},
+	},
 };
 </script>
 
@@ -36,17 +41,17 @@ export default {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 25vh;
+	height: 25vh;
 	background-color: var(--black);
-	margin-top: 15vh;
 }
 .footer-media {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	min-height: 10vh;
+	height: auto;
 	background-color: var(--cream);
+	flex-wrap: wrap;
 }
 
 .footer_nav {

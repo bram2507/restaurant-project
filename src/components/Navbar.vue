@@ -2,18 +2,18 @@
 	<div :class="navStyle">
 		<div class="navbar__logo">
 			<div class="navbar__logo__name">
-				<h1>Yakuza</h1>
+				<img
+					src="https://static1.squarespace.com/static/5a37f0e2f09ca4f1abf483ca/t/6080a752e8190e18e76c2c1f/1620293300399/LogoYakuza2-01.png"
+					alt=""
+				/>
 			</div>
 		</div>
 		<div v-if="desktop" class="navbar__navegation">
-			<router-link to="/">
-				<span>Restaurante</span>
-			</router-link>
-			<router-link to="/menu">
-				<span>Carta</span>
-			</router-link>
-			<router-link to="/specials"><span>Especiales</span></router-link>
-			<router-link to="/booking"><span>Reservas</span></router-link>
+			<div @click="$router.push('/')">Restaurante</div>
+			<div @click="$router.push('/menu')">Carta</div>
+			<div @click="$router.push('/specials')">Especialidades</div>
+			<div @click="$router.push('/groups')">Grupos</div>
+			<div @click="$router.push('/booking')">Reservas</div>
 			<div>
 				<div @click="showCart">
 					<svg
@@ -243,12 +243,15 @@ export default {
 };
 </script>
 <style scoped>
+a {
+	text-decoration: none !important;
+}
 .navbar-active {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	height: auto;
+	height: 10vh;
 	padding: 0.5vh;
 	margin: 0px;
 	top: 0;
@@ -261,6 +264,12 @@ export default {
 }
 .navbar__logo__name {
 	margin-left: 2vh;
+}
+
+.navbar__logo__name img {
+	width: 10%;
+	height: 10%;
+	image-rendering: optimizeQuality;
 }
 .navbar-scroll {
 	display: flex;
@@ -297,17 +306,16 @@ export default {
 	text-decoration: underline;
 }
 
-.navbar__navegation span,
-router-link {
+.navbar__navegation div {
 	font-size: 1.2rem;
 	margin-left: 2vh;
 	margin-right: 2vh;
-	text-decoration: none;
+	text-decoration: none !important;
 	color: var(--white);
 }
 
 .navbar__navegation:active,
-span:active {
+div:active {
 	text-decoration: none;
 }
 
