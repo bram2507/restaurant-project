@@ -38,6 +38,7 @@ export default {
 	width: 100%;
 	min-height: 25vh;
 	background-color: var(--black);
+	margin-top: 15vh;
 }
 .footer-media {
 	display: flex;

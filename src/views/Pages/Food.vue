@@ -14,8 +14,12 @@
 						<span>{{ item.name.replaceAll("-", " ") }}</span>
 						<span>{{ item.desc }}</span>
 						<span>{{ item.price }}</span>
-						<button @click="addItem(item)">añadir</button>
-						<button @click="deleteItem(item)">eliminar</button>
+						<button v-if="!item.restaurant" @click="addItem(item)">
+							añadir
+						</button>
+						<button v-if="!item.restaurant" @click="deleteItem(item)">
+							eliminar
+						</button>
 					</div>
 					<div>
 						<img :src="item.img" alt="food-image" />
@@ -50,6 +54,7 @@ export default {
 	created() {},
 	methods: {
 		addItem(item) {
+			console.log(item);
 			this.$store.dispatch("addItem", item);
 		},
 		deleteItem(item) {
@@ -70,10 +75,11 @@ export default {
 	justify-content: center;
 	align-content: center;
 	width: 100%;
-	height: 100vh;
+	height: auto;
 	background-color: var(--white);
 	flex-direction: column;
-	margin-top: 60vh;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
 }
 .main__food-contanier--items {
 	display: flex;
@@ -178,7 +184,6 @@ export default {
 	align-items: center;
 	width: 100%;
 	height: auto;
-
 	font-size: 3vw;
 	font-family: "Noto Sans", sans-serif;
 }

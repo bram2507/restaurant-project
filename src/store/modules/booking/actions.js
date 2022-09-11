@@ -13,4 +13,8 @@ const subTotal = ({ commit }, subTotal) => {
 const iva = ({ commit }, iva) => {
   commit("iva", iva);
 };
-export default { addItem, deleteItem, subTotal, iva };
+
+const clearCart = ({ commit }) => {
+  commit("clearCart");
+};
+export default { addItem, deleteItem, subTotal, iva, clearCart };

@@ -10,7 +10,7 @@
 				<span>Restaurante</span>
 			</router-link>
 			<router-link to="/menu">
-				<span>Menu</span>
+				<span>Carta</span>
 			</router-link>
 			<router-link to="/specials"><span>Especiales</span></router-link>
 			<router-link to="/booking"><span>Reservas</span></router-link>
@@ -138,7 +138,12 @@
 				</div>
 			</div>
 			<div v-if="subTotal() > 0" class="cart__preview--title">
-				<button>Gestionar Pedido</button>
+				<button class="cart__preview--button__ship">Gestionar Pedido</button>
+			</div>
+			<div v-if="subTotal() > 0" class="cart__preview--title">
+				<button class="cart__preview--button__delete" @click="clearCart">
+					Eliminar Pedido
+				</button>
 			</div>
 		</div>
 	</div>
@@ -204,6 +209,9 @@ export default {
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);
+		},
+		clearCart() {
+			this.$store.dispatch("clearCart");
 		},
 		showCart() {
 			this.cart = !this.cart;
@@ -402,7 +410,7 @@ span:active {
 	padding: 0.5vh;
 }
 
-.cart__preview button {
+.cart__preview--button__ship {
 	width: 200px;
 	height: auto;
 	display: flex;
@@ -422,7 +430,7 @@ span:active {
 	margin-bottom: 2vh;
 }
 
-.cart__preview button:hover {
+.cart__preview--button__ship:hover {
 	border-radius: 4vh;
 	outline: none;
 	border: 2px solid var(--black);
@@ -432,6 +440,35 @@ span:active {
 	transition: 0.5s ease-in-out;
 }
 
+.cart__preview--button__delete {
+	width: 200px;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	border: 2px solid var(--red);
+	background-color: var(--red);
+	color: var(--white);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+	margin-left: 2vh;
+	padding: 2vh;
+	position: relative;
+	margin-bottom: 2vh;
+}
+
+.cart__preview--button__delete:hover {
+	border-radius: 4vh;
+	outline: none;
+	border: 2px solid var(--red);
+	background-color: var(--white);
+	color: var(--black);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+}
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
