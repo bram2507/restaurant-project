@@ -138,7 +138,9 @@
 				</div>
 			</div>
 			<div v-if="subTotal() > 0" class="cart__preview--title">
-				<button class="cart__preview--button__ship">Gestionar Pedido</button>
+				<button @click="booking()" class="cart__preview--button__ship">
+					Gestionar Pedido
+				</button>
 			</div>
 			<div v-if="subTotal() > 0" class="cart__preview--title">
 				<button class="cart__preview--button__delete" @click="clearCart">
@@ -212,6 +214,12 @@ export default {
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);
+		},
+		booking() {
+			this.$router.push("/booking");
+			setTimeout(() => {
+				this.cart = false;
+			});
 		},
 		clearCart() {
 			this.$store.dispatch("clearCart");
