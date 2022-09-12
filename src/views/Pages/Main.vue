@@ -13,8 +13,18 @@
 				</section>
 				<section class="main_contanier__call-action__right--buttons">
 					<div class="buttons__action">
-						<button class="buttons__action_style">Pedir ahora</button>
-						<button class="buttons__action_style">Menu de grupos</button>
+						<button
+							class="buttons__action_style"
+							@click="$router.push('/menu')"
+						>
+							Carta
+						</button>
+						<button
+							class="buttons__action_style"
+							@click="$router.push('/groups')"
+						>
+							Grupos
+						</button>
 					</div>
 				</section>
 				<section class="main_contanier__call-action_right--customers-says">
@@ -68,13 +78,13 @@
 			<section class="main_contanier__call-action__seller--container">
 				<ul class="main_contanier__call-action__seller--left_side_product">
 					<li>
-						<h1>Whats trending / トレンド</h1>
+						<h1>Los rolls más pedidos / トレンド</h1>
 					</li>
 					<li>
-						<h2>Japanese Sushi</h2>
+						<h2>Roll Japoneses</h2>
 					</li>
 					<li>
-						<h3>Feel the taste of most delicious and creative sushi here.</h3>
+						<h3>Prueba nuestros rolls y no querás otros.</h3>
 					</li>
 					<li class="sushi_products">
 						<div
@@ -100,16 +110,13 @@
 
 				<ul class="main_contanier__call-action__seller--left_side_product">
 					<li>
-						<h1>Whats trending / トレンド</h1>
+						<h1>Bebidas más pedidas / トレンド</h1>
 					</li>
 					<li>
-						<h2>Japanese Drinks</h2>
+						<h2>Bebidas Japonesas</h2>
 					</li>
 					<li>
-						<h3>
-							Feel the taste of most delicious japanes hot and could drinks
-							here.
-						</h3>
+						<h3>Acompaña tu comida con una bebida especial fría o caliente.</h3>
 					</li>
 					<li class="sushi_products">
 						<div
@@ -138,19 +145,19 @@ export default {
 			desktop: true,
 			windowWitdh: 0,
 			sushi: [
-				"maki sushi",
-				"nigiri sushi",
-				"ozishuzi",
-				"temaki sushi",
-				"uramaki sushi",
-				"inari sushi",
+				"Ex roll",
+				"Veggie roll",
+				"Tentación roll",
+				"Cachas roll",
+				"Pecado roll",
+				"Mordisco roll",
 			],
 			drinks: [
-				"Oruncha",
-				"Ofukucha",
-				"Sakura Tea",
+				"Asahi Lager",
+				"Kirin Ichiban Lager",
+				"Sapporo",
 				"Kombu-cha",
-				"Aojiru",
+				"Macha Tea",
 				"Muguicha",
 			],
 		};
@@ -172,7 +179,6 @@ export default {
 li {
 	list-style: none;
 }
-
 .main_contanier {
 	width: 100%;
 	height: auto;
@@ -181,6 +187,7 @@ li {
 	align-items: center;
 	background-color: var(--white);
 	margin: 0px;
+	margin-top: 10vh;
 	flex-direction: column;
 }
 .main_contanier__call-action {
@@ -340,7 +347,7 @@ li {
 
 .main_contanier__call-action__right--title h1 {
 	width: 65%;
-	font-size: 4vw;
+	font-size: 3rem;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -349,7 +356,7 @@ li {
 
 .main_contanier__call-action__right--subtitle h2 {
 	width: 65%;
-	font-size: 2.5vw;
+	font-size: 2rem;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -506,7 +513,7 @@ li {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 50vh;
+	min-height: 60vh;
 	flex-direction: column;
 	background-color: var(--cream);
 	margin-bottom: 1vh;
@@ -564,7 +571,7 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 4vw;
+	font-size: 3rem;
 	font-family: "Noto Sans", sans-serif;
 	padding: 4vh;
 	text-align: left;
@@ -580,7 +587,7 @@ li {
 }
 
 .main_contanier__dished--rigth__subtitle h2 {
-	font-size: 2.5vw;
+	font-size: 2rem;
 	font-family: "Noto Sans", sans-serif;
 	padding: 2vh;
 	text-align: left;

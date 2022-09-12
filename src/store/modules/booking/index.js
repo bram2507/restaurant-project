@@ -49,9 +49,16 @@ const state = {
       price: "13.40",
       cant: 0,
     },
+    "Maki-de-Red-Velvet": {
+      name: "Maki-de-Red-Velvet",
+      price: "6.90",
+      cant: 0,
+    },
     iva: 0,
     subTotal: 0,
+    menu: "",
   },
+  nav: false,
 };
 
 export default {

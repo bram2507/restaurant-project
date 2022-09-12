@@ -1,24 +1,22 @@
 <template>
-	<div class="footer__container"></div>
 	<div class="footer-media">
+		<div class="footer__container"></div>
 		<div>
 			<h1>Ashitaka</h1>
 		</div>
 		<div class="footer_nav">
-			<router-link to="/"><span>Restaurante</span></router-link>
-			<router-link to="/menu"><span>Menu</span></router-link>
-			<router-link to="/specials"><span>Especiales</span></router-link>
-			<router-link to="/booking"><span>Reservas</span></router-link>
+			<div @click="$router.push('/')">Restaurante</div>
+			<div @click="$router.push('/menu')">Carta</div>
+			<div @click="$router.push('/specials')">Especialidades</div>
+			<div @click="$router.push('/groups')">Grupos</div>
+			<div @click="$router.push('/booking')">Reservas</div>
 		</div>
 		<div class="socail_media">
-			<div>
+			<div @click="goToInstagram()">
 				<img src="@/assets/instagram.svg" alt="" />
 			</div>
-			<div>
+			<div @click="goToFacebook()">
 				<img src="@/assets/facebook.svg" alt="" />
-			</div>
-			<div>
-				<img src="@/assets/twitter.svg" alt="" />
 			</div>
 		</div>
 	</div>
@@ -27,6 +25,14 @@
 <script>
 export default {
 	name: "footer-content",
+	methods: {
+		goToInstagram() {
+			window.open("https://www.instagram.com/sushiyakuza/", "_blank");
+		},
+		goToFacebook() {
+			window.open("https://www.facebook.com/sushiyakuza.es/", "_blank");
+		},
+	},
 };
 </script>
 
@@ -36,7 +42,7 @@ export default {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 25vh;
+	height: 25vh;
 	background-color: var(--black);
 }
 .footer-media {
@@ -44,8 +50,9 @@ export default {
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	min-height: 10vh;
+	height: auto;
 	background-color: var(--cream);
+	flex-wrap: wrap;
 }
 
 .footer_nav {
@@ -54,6 +61,10 @@ export default {
 	align-items: center;
 	width: 57%;
 	height: auto;
+}
+
+.footer_nav div {
+	margin-top: 1.5vh;
 }
 
 .socail_media {

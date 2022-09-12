@@ -2,7 +2,12 @@
 	<div class="main__food-contanier">
 		<div class="main__food-contanier--items">
 			<div class="main__food-contanier--title">
-				<h1>{{ food.title }}</h1>
+				<div>
+					<h1>{{ food.title }}</h1>
+				</div>
+				<div>
+					<img src="@/assets/brush.svg" alt="" />
+				</div>
 			</div>
 			<div
 				class="main__food-list"
@@ -12,10 +17,27 @@
 				<div class="main__food-list--items">
 					<div>
 						<span>{{ item.name.replaceAll("-", " ") }}</span>
+						<span
+							><strong class="shipping__access">{{
+								item.shipping
+							}}</strong></span
+						>
 						<span>{{ item.desc }}</span>
 						<span>{{ item.price }}</span>
-						<button @click="addItem(item)">añadir</button>
-						<button @click="deleteItem(item)">eliminar</button>
+						<button
+							class="main__food-list--items__addItem"
+							v-if="!item.restaurant"
+							@click="addItem(item)"
+						>
+							añadir
+						</button>
+						<button
+							class="main__food-list--items__deleteItem"
+							v-if="!item.restaurant"
+							@click="deleteItem(item)"
+						>
+							eliminar
+						</button>
 					</div>
 					<div>
 						<img :src="item.img" alt="food-image" />
@@ -51,6 +73,7 @@ export default {
 	methods: {
 		addItem(item) {
 			this.$store.dispatch("addItem", item);
+			this.$store.dispatch("menu", "");
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);
@@ -65,15 +88,19 @@ export default {
 };
 </script>
 <style scoped>
+.shipping__access {
+	color: var(--red);
+}
 .main__food-contanier {
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	width: 100%;
-	height: 100vh;
+	height: auto;
 	background-color: var(--white);
 	flex-direction: column;
-	margin-top: 60vh;
+	margin-top: 10vh;
+	margin-bottom: 10vh;
 }
 .main__food-contanier--items {
 	display: flex;
@@ -127,7 +154,7 @@ export default {
 	text-align: left;
 }
 
-.main__food-list--items button {
+.main__food-list--items__addItem {
 	width: 120px;
 	height: 50px;
 	display: flex;
@@ -137,8 +164,8 @@ export default {
 	outline: none;
 	border: none;
 	border: 2px solid var(--black);
-	background-color: var(--black);
-	color: var(--white);
+	background-color: var(--white);
+	color: var(--black);
 	font-size: 1em;
 	transition: 0.5s ease-in-out;
 	margin-left: 2vh;
@@ -146,12 +173,42 @@ export default {
 	margin-bottom: 2vh;
 }
 
-.main__food-list--items button:hover {
+.main__food-list--items__addItem:hover {
 	border-radius: 4vh;
 	outline: none;
 	border: 2px solid var(--black);
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+}
+
+.main__food-list--items__deleteItem {
+	width: 120px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	border: 2px solid var(--red);
 	background-color: var(--white);
-	color: var(--black);
+	color: var(--red);
+
+	font-size: 1em;
+	transition: 0.5s ease-in-out;
+	margin-left: 2vh;
+	padding: 2vh;
+	margin-bottom: 2vh;
+}
+
+.main__food-list--items__deleteItem:hover {
+	border-radius: 4vh;
+	outline: none;
+	border: 2px solid var(--red);
+	background-color: var(--red);
+	color: var(--white);
 	font-size: 1em;
 	transition: 0.5s ease-in-out;
 }
@@ -178,8 +235,22 @@ export default {
 	align-items: center;
 	width: 100%;
 	height: auto;
-
 	font-size: 3vw;
 	font-family: "Noto Sans", sans-serif;
+	flex-direction: column;
+}
+
+.main__food-contanier--title div:last-child {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 25vh;
+	margin-top: -10vh;
+}
+.main__food-contanier--title img {
+	width: 85%;
+	height: 100%;
+	color: var(--red);
 }
 </style>
