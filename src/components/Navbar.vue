@@ -191,9 +191,6 @@ export default {
 		list: {
 			deep: true,
 			handler(value) {
-				this.$store.dispatch("iva", this.iva());
-				this.$store.dispatch("subTotal", this.subTotal());
-
 				return value;
 			},
 		},

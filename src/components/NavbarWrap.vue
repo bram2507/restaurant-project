@@ -147,12 +147,18 @@ export default {
 			return this.$nav2;
 		},
 	},
+	watch: {
+		list: {
+			deep: true,
+			handler(value) {
+				return value;
+			},
+		},
+	},
 	created() {},
 	methods: {
 		addItem(item) {
-			if (this.$nav2) {
-				this.$store.dispatch("addItem", item);
-			}
+			this.$store.dispatch("addItem", item);
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);
@@ -183,7 +189,7 @@ export default {
 			return parseFloat(subtotal).toFixed(2);
 		},
 		iva2() {
-			return (this.subTotal() * 0.21).toFixed(2);
+			return (this.subTotal2() * 0.21).toFixed(2);
 		},
 		total2() {
 			let total = parseFloat(this.list.subTotal) + parseFloat(this.list.iva);
