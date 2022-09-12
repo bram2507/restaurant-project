@@ -10,7 +10,7 @@
 import Navbar from "./components/Navbar.vue";
 import NavbarWrap from "./components/NavbarWrap.vue";
 import Footer from "./components/Footer.vue";
-import { mapGetters } from "vuex";
+
 export default {
 	name: "app-component",
 	components: {
@@ -18,9 +18,6 @@ export default {
 		NavbarWrap,
 		Footer,
 	},
-	...mapGetters({
-		$nav: "nav",
-	}),
 };
 </script>
 <style>

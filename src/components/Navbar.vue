@@ -165,6 +165,7 @@ export default {
 	computed: {
 		...mapGetters({
 			$getBooking: "getBooking",
+			$nav: "nav",
 		}),
 		list() {
 			return this.$getBooking;
@@ -244,7 +245,7 @@ export default {
 			return parseFloat(total).toFixed(2);
 		},
 		openMenu() {
-			this.$store.dispatch("nav");
+			this.$store.dispatch("nav", !this.$nav);
 		},
 	},
 };

@@ -127,11 +127,11 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			$getBooking2: "getBooking",
-			$nav: "nav",
+			$book: "getBooking",
+			$nav2: "nav",
 		}),
 		list() {
-			return this.$getBooking2;
+			return this.$book;
 		},
 		length() {
 			var cant = 0;
@@ -144,7 +144,7 @@ export default {
 			return cant;
 		},
 		menuOpen2() {
-			return this.$nav;
+			return this.$nav2;
 		},
 	},
 	created() {},
@@ -204,6 +204,7 @@ export default {
 	margin-top: 10vh;
 	position: fixed;
 	z-index: 300;
+	animation: fadeIn 0.1s ease-in-out;
 }
 
 .wrap-menu div {

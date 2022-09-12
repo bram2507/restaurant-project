@@ -20,9 +20,8 @@ const menu = (state, menu) => {
   state.booking.menu = menu;
 };
 
-const nav = (state) => {
-  state.nav = !state.nav;
-  console.log(state.nav);
+const nav = (state, nav) => {
+  state.nav = nav;
 };
 
 const clearCart = (state) => {

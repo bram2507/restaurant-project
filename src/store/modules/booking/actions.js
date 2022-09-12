@@ -18,8 +18,8 @@ const menu = ({ commit }, menu) => {
   commit("menu", menu);
 };
 
-const nav = ({ commit }) => {
-  commit("nav");
+const nav = ({ commit }, nav) => {
+  commit("nav", nav);
 };
 
 const clearCart = ({ commit }) => {

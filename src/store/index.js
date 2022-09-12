@@ -5,6 +5,7 @@ import nav from "./modules/booking";
 
 export const store = new Vuex.Store({
   plugins: [createPersistedState()],
+  namespaced: true,
   modules: {
     booking,
     nav,
