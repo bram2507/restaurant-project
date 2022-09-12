@@ -56,6 +56,7 @@ const state = {
     },
     iva: 0,
     subTotal: 0,
+    menu: "",
   },
 };
 

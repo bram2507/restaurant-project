@@ -99,12 +99,16 @@ export default defineComponent({
 		};
 	},
 	created() {
-		Object.values(this.$getBooking).map((e) => {
-			if (e.cant) {
-				this.message += e.name + " " + e.cant + "\n\n\n";
-			}
-			return e;
-		});
+		if (this.$getBooking.menu !== "") {
+			this.message = this.$getBooking.menu;
+		} else {
+			Object.values(this.$getBooking).map((e) => {
+				if (e.cant) {
+					this.message += e.name + " " + e.cant + "\n\n\n";
+				}
+				return e;
+			});
+		}
 	},
 });
 </script>

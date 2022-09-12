@@ -16,6 +16,10 @@ const subTotal = (state, subTotal) => {
   state.booking.subTotal = subTotal;
 };
 
+const menu = (state, menu) => {
+  state.booking.menu = menu;
+};
+
 const clearCart = (state) => {
   state.booking = {
     Edamame: {
@@ -70,6 +74,7 @@ const clearCart = (state) => {
     },
     iva: 0,
     subTotal: 0,
+    menu: "",
   };
 };
 
@@ -77,6 +82,7 @@ export default {
   addItem,
   deleteItem,
   iva,
+  menu,
   subTotal,
   clearCart,
 };

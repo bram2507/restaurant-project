@@ -72,8 +72,8 @@ export default {
 	created() {},
 	methods: {
 		addItem(item) {
-			console.log(item);
 			this.$store.dispatch("addItem", item);
+			this.$store.dispatch("menu", "");
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);

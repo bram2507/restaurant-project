@@ -347,7 +347,7 @@ li {
 
 .main_contanier__call-action__right--title h1 {
 	width: 65%;
-	font-size: 4vw;
+	font-size: 3rem;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -356,7 +356,7 @@ li {
 
 .main_contanier__call-action__right--subtitle h2 {
 	width: 65%;
-	font-size: 2.5vw;
+	font-size: 2rem;
 	padding: 4vh;
 	font-family: "Noto Sans", sans-serif;
 	text-align: left;
@@ -513,7 +513,7 @@ li {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height: 50vh;
+	min-height: 60vh;
 	flex-direction: column;
 	background-color: var(--cream);
 	margin-bottom: 1vh;
@@ -571,7 +571,7 @@ li {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 4.5vw;
+	font-size: 3rem;
 	font-family: "Noto Sans", sans-serif;
 	padding: 4vh;
 	text-align: left;
@@ -587,7 +587,7 @@ li {
 }
 
 .main_contanier__dished--rigth__subtitle h2 {
-	font-size: 3vw;
+	font-size: 2rem;
 	font-family: "Noto Sans", sans-serif;
 	padding: 2vh;
 	text-align: left;

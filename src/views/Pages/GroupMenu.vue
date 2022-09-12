@@ -5,11 +5,11 @@
 		</div>
 		<div class="descp_menus">
 			<div class="descp__menus--text">
-				<p>
+				<h2>
 					Los menus de grupo están destinados a 6 a 10 personas. Es posible
 					elegir entre unos 2 tipos de menus. Está completamente compensados y
 					las cantidades son una locura.
-				</p>
+				</h2>
 			</div>
 		</div>
 		<div class="main__food-container--items">
@@ -84,23 +84,37 @@
 				</div>
 			</div>
 		</div>
-		<div class="select-menu">
+		<div class="select__menu_container">
 			<div>
-				<select
-					name="menus"
-					@change="onChange($event)"
-					class="form-control"
-					v-model="menus"
-				>
-					<option value="Menu Simple">Menu Simple</option>
-					<option value="Menu Empresa">Menu Empresa</option>
-				</select>
+				<h1>Selecciona el menú de grupo</h1>
 			</div>
+			<select
+				name="menus"
+				@change="onChange($event)"
+				class="select-menu"
+				v-model="menus"
+			>
+				<option value="Menu Simple">Menu Simple</option>
+				<option value="Menu Empresa">Menu Empresa</option>
+			</select>
+			<button
+				class="select__menu_container--button"
+				@click="$router.push('/booking')"
+				:disabled="disabled"
+			>
+				Reservar
+			</button>
 		</div>
 	</div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
+	computed: {
+		...mapGetters({
+			$getBooking: "getBooking",
+		}),
+	},
 	data() {
 		return {
 			menus: ["menu simple", "menu empresa"],
@@ -143,7 +157,6 @@ export default {
 			},
 			menu2: {
 				title: "Menu empresa",
-
 				starters: [
 					{
 						name: "Poke-de-Salmón X (2)",
@@ -219,6 +232,7 @@ export default {
 					},
 				],
 			},
+			disabled: true,
 		};
 	},
 	methods: {
@@ -237,7 +251,9 @@ export default {
 			return parseFloat(total * 0.21).toFixed(2) + " €";
 		},
 		onChange(event) {
-			alert(event.target.value);
+			this.disabled = false;
+			this.$store.dispatch("clearCart");
+			this.$store.dispatch("menu", event.target.value);
 		},
 	},
 };
@@ -247,23 +263,71 @@ export default {
 	color: var(--red);
 }
 
-.select-menu {
+.select__menu_container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 	width: 100%;
 	height: auto;
 	margin-top: 10vh;
 	margin-bottom: 10vh;
 }
 
-.select-menu div {
+.select__menu_container {
+	font-size: 3vw;
+}
+
+.select-menu {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 85%;
-	height: auto;
-	padding: 4vh;
+	width: 75%;
+	height: 5vh;
+	border-radius: 0.5vh;
+	border: 2px solid var(--black);
+}
+
+.select-menu:focus {
+	border-radius: 0.5vh;
+	border: 2px solid var(--red);
+}
+
+.select__menu_container--button {
+	width: 300px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 0.8em;
+	transition: 0.5s ease-in-out;
+	padding: 2vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+}
+
+.select__menu_container--button__inactive {
+	width: 300px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4vh;
+	outline: none;
+	border: none;
+	background-color: var(--black);
+	color: var(--white);
+	font-size: 0.8em;
+	transition: 0.5s ease-in-out;
+	padding: 2vh;
+	margin-top: 5vh;
+	margin-bottom: 5vh;
+	opacity: 0.5;
 }
 
 .descp_menus {
@@ -291,6 +355,19 @@ export default {
 	background-color: var(--white);
 	flex-direction: column;
 }
+
+.descp__menus--text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	width: 85%;
+}
+.descp__menus--text h2 {
+	font-size: 2rem;
+	padding: 4vh;
+}
+
 .groups__contanier--title {
 	display: flex;
 	justify-content: center;
@@ -350,11 +427,6 @@ export default {
 	margin-bottom: 2vh;
 	transition: 0.3s ease-in-out;
 }
-
-/* .main__food-list:hover {
-	transition: 0.3s ease-in-out;
-	transform: translateY(10px);
-} */
 
 .main__food-list--items {
 	display: flex;
