@@ -150,7 +150,9 @@ export default {
 	created() {},
 	methods: {
 		addItem(item) {
-			this.$store.dispatch("addItem", item);
+			if (this.$nav2) {
+				this.$store.dispatch("addItem", item);
+			}
 		},
 		deleteItem(item) {
 			this.$store.dispatch("deleteItem", item);
