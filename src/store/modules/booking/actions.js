@@ -18,7 +18,11 @@ const menu = ({ commit }, menu) => {
   commit("menu", menu);
 };
 
+const nav = ({ commit }) => {
+  commit("nav");
+};
+
 const clearCart = ({ commit }) => {
   commit("clearCart");
 };
-export default { addItem, deleteItem, subTotal, iva, clearCart, menu };
+export default { addItem, deleteItem, subTotal, iva, clearCart, menu, nav };

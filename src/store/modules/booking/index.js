@@ -58,6 +58,7 @@ const state = {
     subTotal: 0,
     menu: "",
   },
+  nav: false,
 };
 
 export default {

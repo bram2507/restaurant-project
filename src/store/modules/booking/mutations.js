@@ -20,6 +20,11 @@ const menu = (state, menu) => {
   state.booking.menu = menu;
 };
 
+const nav = (state) => {
+  state.nav = !state.nav;
+  console.log(state.nav);
+};
+
 const clearCart = (state) => {
   state.booking = {
     Edamame: {
@@ -75,6 +80,7 @@ const clearCart = (state) => {
     iva: 0,
     subTotal: 0,
     menu: "",
+    nav: false,
   };
 };
 
@@ -83,6 +89,7 @@ export default {
   deleteItem,
   iva,
   menu,
+  nav,
   subTotal,
   clearCart,
 };
