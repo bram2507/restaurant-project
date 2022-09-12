@@ -5,10 +5,11 @@
 			<h1>Ashitaka</h1>
 		</div>
 		<div class="footer_nav">
-			<router-link to="/"><span>Restaurante</span></router-link>
-			<router-link to="/menu"><span>Menu</span></router-link>
-			<router-link to="/specials"><span>Especiales</span></router-link>
-			<router-link to="/booking"><span>Reservas</span></router-link>
+			<div @click="$router.push('/')">Restaurante</div>
+			<div @click="$router.push('/menu')">Carta</div>
+			<div @click="$router.push('/specials')">Especialidades</div>
+			<div @click="$router.push('/groups')">Grupos</div>
+			<div @click="$router.push('/booking')">Reservas</div>
 		</div>
 		<div class="socail_media">
 			<div @click="goToInstagram()">
@@ -60,6 +61,10 @@ export default {
 	align-items: center;
 	width: 57%;
 	height: auto;
+}
+
+.footer_nav div {
+	margin-top: 1.5vh;
 }
 
 .socail_media {

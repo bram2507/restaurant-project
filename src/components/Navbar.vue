@@ -185,10 +185,7 @@ export default {
 	watch: {
 		windowWitdh: function (value) {
 			this.desktop = true;
-			if (value > 956 && value < 1200) {
-				this.desktop = true;
-			}
-			if (value < 956) {
+			if (value < 1500) {
 				this.desktop = false;
 			}
 		},
