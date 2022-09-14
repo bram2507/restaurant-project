@@ -10,13 +10,8 @@ const subTotal = (state) => {
   return state.booking.subTotal;
 };
 
-const nav = (state) => {
-  return state.nav;
-};
-
 export default {
   getBooking,
   iva,
   subTotal,
-  nav,
 };

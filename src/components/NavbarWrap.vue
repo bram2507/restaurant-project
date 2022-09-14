@@ -128,7 +128,7 @@ export default {
 	computed: {
 		...mapGetters({
 			$book: "getBooking",
-			$nav2: "nav",
+			$nav2: "navbar",
 		}),
 		list() {
 			return this.$book;
@@ -209,7 +209,7 @@ export default {
 	flex-direction: column;
 	color: white;
 	padding: 4vh;
-	margin-top: 10vh;
+
 	position: fixed;
 	z-index: 300;
 	animation: fadeIn 0.1s ease-in-out;

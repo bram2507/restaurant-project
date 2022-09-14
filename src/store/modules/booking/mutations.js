@@ -1,4 +1,5 @@
 const addItem = (state, item) => {
+  console.log(item);
   state.booking[item.name.replaceAll(" ", "-")].cant++;
 };
 
@@ -18,10 +19,6 @@ const subTotal = (state, subTotal) => {
 
 const menu = (state, menu) => {
   state.booking.menu = menu;
-};
-
-const nav = (state, nav) => {
-  state.nav = nav;
 };
 
 const clearCart = (state) => {
@@ -79,7 +76,6 @@ const clearCart = (state) => {
     iva: 0,
     subTotal: 0,
     menu: "",
-    nav: false,
   };
 };
 
@@ -88,7 +84,6 @@ export default {
   deleteItem,
   iva,
   menu,
-  nav,
   subTotal,
   clearCart,
 };

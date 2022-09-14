@@ -298,6 +298,7 @@ export default {
 	align-items: center;
 	background-color: var(--white);
 	flex-direction: column;
+	margin-top: 10vh;
 }
 .menu__contanier--shipping {
 	display: flex;

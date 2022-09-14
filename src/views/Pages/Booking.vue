@@ -121,6 +121,7 @@ export default defineComponent({
 	align-items: center;
 	background-color: lightslategrey;
 	flex-direction: column;
+	margin-top: 10vh;
 }
 .schudle {
 	display: flex;

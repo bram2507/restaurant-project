@@ -88,6 +88,7 @@ export default {
 	align-items: center;
 	background-color: var(--white);
 	flex-direction: column;
+	margin-top: 10vh;
 }
 .special__contanier--title {
 	display: flex;
