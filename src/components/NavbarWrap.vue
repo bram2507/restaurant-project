@@ -128,7 +128,7 @@ export default {
 	computed: {
 		...mapGetters({
 			$book: "getBooking",
-			$nav2: "nav",
+			$nav2: "navbar",
 		}),
 		list() {
 			return this.$book;

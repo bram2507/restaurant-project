@@ -39,8 +39,8 @@
 			</div>
 		</div>
 		<div class="navbarWrap">
-			<div @click="openMenu()" class="navbar-navigation--mobile">
-				<div>
+			<div class="navbar-navigation--mobile">
+				<div @click="showHideMenu()">
 					<svg
 						width="35"
 						height="35"
@@ -165,7 +165,7 @@ export default {
 	computed: {
 		...mapGetters({
 			$getBooking: "getBooking",
-			$nav: "nav",
+			$nav: "navbar",
 		}),
 		list() {
 			return this.$getBooking;
@@ -187,12 +187,6 @@ export default {
 			if (value < 1500) {
 				this.desktop = false;
 			}
-		},
-		list: {
-			deep: true,
-			handler(value) {
-				return value;
-			},
 		},
 	},
 	created() {
@@ -241,8 +235,8 @@ export default {
 			let total = parseFloat(this.list.subTotal) + parseFloat(this.list.iva);
 			return parseFloat(total).toFixed(2);
 		},
-		openMenu() {
-			this.$store.dispatch("nav", !this.$nav);
+		showHideMenu() {
+			this.$store.dispatch("navbar");
 		},
 	},
 };
