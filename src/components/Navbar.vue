@@ -184,9 +184,20 @@ export default {
 	watch: {
 		windowWitdh: function (value) {
 			this.desktop = true;
+
 			if (value < 1500) {
 				this.desktop = false;
 			}
+		},
+		list: {
+			deep: true,
+			handler(value) {
+				console.log(value);
+				let subTotal = this.subTotal();
+				let iva = this.iva();
+				this.$store.dispatch("subTotal", subTotal);
+				this.$store.dispatch("iva", iva);
+			},
 		},
 	},
 	created() {
@@ -194,6 +205,7 @@ export default {
 			this.windowWitdh = window.innerWidth;
 			console.log("Resize");
 			this.desktop = true;
+			this.$store.dispatch("navbar");
 		});
 	},
 	methods: {
@@ -226,6 +238,7 @@ export default {
 					return e;
 				}
 			});
+			console.log(subtotal);
 			return parseFloat(subtotal).toFixed(2);
 		},
 		iva() {
@@ -233,6 +246,7 @@ export default {
 		},
 		total() {
 			let total = parseFloat(this.list.subTotal) + parseFloat(this.list.iva);
+			console.log(total);
 			return parseFloat(total).toFixed(2);
 		},
 		showHideMenu() {
